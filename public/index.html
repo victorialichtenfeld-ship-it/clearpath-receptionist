@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ClearPath AI Receptionist</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; border-radius: 0 !important; }
+    body { font-family: 'Helvetica Neue', sans-serif; background: #fff; color: #0a0a0a; }
+    header { background: #000; color: #fff; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-weight: 900; letter-spacing: 3px; font-size: 0.85rem; }
+    .hero { background: #000; color: #fff; padding: 100px 40px; text-align: center; }
+    .badge { display: inline-block; background: #fff; color: #000; font-size: 0.65rem; font-weight: 700; letter-spacing: 3px; padding: 6px 14px; margin-bottom: 24px; }
+    h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; letter-spacing: -2px; max-width: 700px; margin: 0 auto 20px; }
+    .sub { font-size: 1.1rem; opacity: 0.8; max-width: 500px; margin: 0 auto 40px; line-height: 1.6; }
+    .features { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-bottom: 40px; }
+    .feature { background: #ffffff15; border: 1px solid #ffffff30; padding: 8px 16px; font-size: 0.85rem; }
+    .btn { background: #fff; color: #000; border: none; padding: 16px 32px; font-size: 1rem; font-weight: 700; cursor: pointer; letter-spacing: 1px; text-decoration: none; display: inline-block; }
+    .fine { margin-top: 12px; opacity: 0.5; font-size: 0.8rem; }
+    section { padding: 80px 40px; max-width: 800px; margin: 0 auto; }
+    h2 { font-size: 2rem; font-weight: 900; letter-spacing: -1px; margin-bottom: 40px; text-align: center; }
+    .steps { display: flex; flex-direction: column; gap: 24px; }
+    .step { display: flex; gap: 20px; align-items: flex-start; }
+    .num { background: #000; color: #fff; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; font-weight: 900; flex-shrink: 0; }
+    .quote-section { background: #f8f8f8; padding: 60px 40px; text-align: center; }
+    blockquote { font-size: 1.2rem; font-style: italic; max-width: 600px; margin: 0 auto 12px; line-height: 1.6; }
+    cite { opacity: 0.5; font-size: 0.85rem; }
+    .pricing { padding: 80px 40px; text-align: center; }
+    .price-card { display: inline-block; border: 2px solid #000; padding: 40px; max-width: 360px; width: 100%; }
+    .price-label { font-size: 0.7rem; letter-spacing: 3px; font-weight: 700; margin-bottom: 16px; }
+    .price { font-size: 3rem; font-weight: 900; }
+    .per { font-size: 1rem; font-weight: 400; }
+    ul { list-style: none; padding: 0; text-align: left; margin: 24px 0; line-height: 2; }
+    footer { background: #000; color: #fff; padding: 40px; text-align: center; font-size: 0.85rem; opacity: 0.7; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">CLEARPATH AI</div>
+    <div style="font-size:0.8rem;opacity:0.6;">AI Receptionist</div>
+  </header>
+
+  <div class="hero">
+    <div class="badge">AI FOR BUSINESS</div>
+    <h1>Your Phone Answered. 24/7. No Staff Required.</h1>
+    <p class="sub">ClearPath AI Receptionist answers every call, books appointments, takes messages, and transfers to your team — automatically.</p>
+    <div class="features">
+      <div class="feature">📞 Answers every call</div>
+      <div class="feature">📅 Books appointments</div>
+      <div class="feature">✉️ Takes messages</div>
+      <div class="feature">🔄 Transfers to staff</div>
+    </div>
+    <a href="https://clearpath-ai.myshopify.com" class="btn">Get Started — $750/month</a>
+    <p class="fine">Setup in 10 minutes · Cancel anytime</p>
+  </div>
+
+  <section>
+    <h2>How It Works</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <div><strong>Customer calls your number</strong><p style="opacity:0.6;margin-top:4px">Your Twilio number forwards to the AI</p></div>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <div><strong>AI answers instantly</strong><p style="opacity:0.6;margin-top:4px">Greets them, understands what they need</p></div>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <div><strong>Books, messages, or transfers</strong><p style="opacity:0.6;margin-top:4px">Handles it completely or gets your team</p></div>
+      </div>
+      <div class="step">
+        <div class="num">4</div>
+        <div><strong>You get notified</strong><p style="opacity:0.6;margin-top:4px">Every appointment and message logged automatically</p></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="quote-section">
+    <blockquote>"We were missing 20+ calls a week after hours. ClearPath AI now handles every single one and books appointments while we sleep."</blockquote>
+    <cite>— Dental office owner, Miami FL</cite>
+  </div>
+
+  <div class="pricing">
+    <h2>Simple Pricing</h2>
+    <div class="price-card">
+      <div class="price-label">AI RECEPTIONIST</div>
+      <div class="price">$750<span class="per">/month</span></div>
+      <ul>
+        <li>✓ Unlimited calls answered</li>
+        <li>✓ 24/7 availability</li>
+        <li>✓ Appointment booking</li>
+        <li>✓ Message taking</li>
+        <li>✓ Call transfers to staff</li>
+        <li>✓ Setup in 10 minutes</li>
+      </ul>
+      <a href="https://clearpath-ai.myshopify.com" class="btn">Start Free Trial</a>
+    </div>
+  </div>
+
+  <footer>© 2026 ClearPath AI · clearpathai.myshopify.com</footer>
+</body>
+</html>
