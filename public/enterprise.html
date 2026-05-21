@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ClearPath AI — Custom Enterprise AI</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; border-radius: 0 !important; }
+    body { font-family: 'Helvetica Neue', sans-serif; background: #fff; color: #0a0a0a; }
+    header { background: #000; color: #fff; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-weight: 900; letter-spacing: 3px; font-size: 0.85rem; }
+    nav a { color: #fff; text-decoration: none; font-size: 0.8rem; opacity: 0.6; margin-left: 24px; }
+    nav a:hover { opacity: 1; }
+
+    .hero { background: #000; color: #fff; padding: 120px 40px; text-align: center; }
+    .badge { display: inline-block; background: #fff; color: #000; font-size: 0.65rem; font-weight: 700; letter-spacing: 3px; padding: 6px 14px; margin-bottom: 24px; }
+    h1 { font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 900; letter-spacing: -2px; max-width: 800px; margin: 0 auto 20px; line-height: 1.1; }
+    .sub { font-size: 1.1rem; opacity: 0.7; max-width: 520px; margin: 0 auto 40px; line-height: 1.7; }
+    .btn { background: #fff; color: #000; border: none; padding: 18px 36px; font-size: 1rem; font-weight: 700; cursor: pointer; letter-spacing: 1px; text-decoration: none; display: inline-block; }
+    .btn-outline { background: transparent; color: #fff; border: 2px solid #ffffff50; padding: 16px 32px; font-size: 0.9rem; font-weight: 700; cursor: pointer; letter-spacing: 1px; text-decoration: none; display: inline-block; margin-left: 16px; }
+    .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .fine { margin-top: 16px; opacity: 0.4; font-size: 0.8rem; }
+
+    .clients { background: #f8f8f8; padding: 40px; text-align: center; }
+    .clients-label { font-size: 0.7rem; letter-spacing: 3px; font-weight: 700; opacity: 0.4; margin-bottom: 20px; }
+    .client-list { display: flex; flex-wrap: wrap; gap: 32px; justify-content: center; opacity: 0.5; font-weight: 700; letter-spacing: 2px; font-size: 0.8rem; }
+
+    section { padding: 100px 40px; max-width: 900px; margin: 0 auto; }
+    h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; letter-spacing: -1px; margin-bottom: 16px; }
+    .section-sub { opacity: 0.6; font-size: 1rem; margin-bottom: 60px; max-width: 560px; line-height: 1.6; }
+
+    .industries { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2px; margin-bottom: 0; }
+    .industry { background: #000; color: #fff; padding: 40px 32px; }
+    .industry-icon { font-size: 1.5rem; margin-bottom: 16px; }
+    .industry h3 { font-size: 1rem; font-weight: 900; letter-spacing: 1px; margin-bottom: 10px; }
+    .industry p { font-size: 0.85rem; opacity: 0.6; line-height: 1.6; }
+
+    .math-section { background: #000; color: #fff; padding: 100px 40px; text-align: center; }
+    .math-section h2 { color: #fff; margin-bottom: 16px; }
+    .math-section .section-sub { color: #fff; opacity: 0.6; margin: 0 auto 60px; }
+    .math-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2px; max-width: 900px; margin: 0 auto; }
+    .math-card { background: #111; padding: 40px 24px; text-align: center; }
+    .math-num { font-size: 2.5rem; font-weight: 900; letter-spacing: -2px; margin-bottom: 8px; }
+    .math-label { font-size: 0.75rem; opacity: 0.5; letter-spacing: 2px; }
+    .math-arrow { color: #fff; font-size: 2rem; display: flex; align-items: center; justify-content: center; background: #000; }
+
+    .example { background: #f8f8f8; padding: 80px 40px; }
+    .example-inner { max-width: 800px; margin: 0 auto; }
+    .example h2 { margin-bottom: 16px; }
+    .example-box { background: #000; color: #fff; padding: 48px; margin-top: 40px; }
+    .example-box h3 { font-size: 1.1rem; letter-spacing: 2px; margin-bottom: 24px; opacity: 0.5; font-weight: 700; }
+    .example-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 32px; }
+    .stat-item strong { display: block; font-size: 2rem; font-weight: 900; letter-spacing: -1px; }
+    .stat-item span { font-size: 0.8rem; opacity: 0.5; }
+    .example-result { border-top: 1px solid #ffffff20; padding-top: 32px; font-size: 1.1rem; line-height: 1.7; opacity: 0.8; }
+
+    .process { padding: 100px 40px; max-width: 900px; margin: 0 auto; }
+    .steps { display: flex; flex-direction: column; gap: 0; }
+    .step { display: flex; gap: 32px; align-items: flex-start; padding: 40px 0; border-bottom: 1px solid #0a0a0a15; }
+    .step:last-child { border-bottom: none; }
+    .num { background: #000; color: #fff; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; font-weight: 900; flex-shrink: 0; font-size: 1.1rem; }
+    .step-content h3 { font-size: 1.1rem; font-weight: 900; margin-bottom: 8px; }
+    .step-content p { opacity: 0.6; line-height: 1.6; font-size: 0.95rem; }
+
+    .pricing-section { background: #000; color: #fff; padding: 100px 40px; text-align: center; }
+    .pricing-section h2 { color: #fff; margin-bottom: 16px; }
+    .pricing-section .section-sub { color: #fff; margin: 0 auto 60px; }
+    .price-cards { display: flex; gap: 2px; justify-content: center; flex-wrap: wrap; max-width: 800px; margin: 0 auto 40px; }
+    .price-card { background: #111; padding: 48px 40px; flex: 1; min-width: 240px; text-align: left; }
+    .price-card.featured { background: #fff; color: #000; }
+    .price-label { font-size: 0.65rem; letter-spacing: 3px; font-weight: 700; margin-bottom: 20px; opacity: 0.5; }
+    .price { font-size: 2.5rem; font-weight: 900; letter-spacing: -2px; margin-bottom: 4px; }
+    .per { font-size: 0.9rem; font-weight: 400; opacity: 0.6; margin-bottom: 24px; }
+    .price-features { list-style: none; font-size: 0.9rem; line-height: 2.2; }
+    .price-features li::before { content: "✓ "; font-weight: 700; }
+
+    .form-section { padding: 100px 40px; max-width: 700px; margin: 0 auto; }
+    .form-section h2 { margin-bottom: 16px; }
+    .form-section .section-sub { margin-bottom: 48px; }
+    form { display: flex; flex-direction: column; gap: 16px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    input, textarea, select {
+      width: 100%; padding: 16px; border: 2px solid #0a0a0a20;
+      font-family: inherit; font-size: 0.95rem; background: #fff;
+      outline: none; transition: border-color 0.2s;
+    }
+    input:focus, textarea:focus, select:focus { border-color: #000; }
+    textarea { height: 140px; resize: vertical; }
+    .submit-btn {
+      background: #000; color: #fff; border: none; padding: 18px 36px;
+      font-size: 1rem; font-weight: 700; cursor: pointer; letter-spacing: 1px;
+      width: 100%; transition: opacity 0.2s;
+    }
+    .submit-btn:hover { opacity: 0.8; }
+    .form-note { font-size: 0.8rem; opacity: 0.4; text-align: center; margin-top: 8px; }
+    .success-msg { display: none; background: #000; color: #fff; padding: 24px; text-align: center; font-weight: 700; letter-spacing: 1px; }
+
+    footer { background: #000; color: #fff; padding: 40px; text-align: center; font-size: 0.85rem; opacity: 0.7; }
+    footer a { color: #fff; text-decoration: none; margin: 0 12px; opacity: 0.6; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">CLEARPATH AI</div>
+    <nav>
+      <a href="/">AI Receptionist</a>
+      <a href="/enterprise.html" style="opacity:1;">Enterprise</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div class="badge">ENTERPRISE AI</div>
+    <h1>Custom AI Built For Your Business.</h1>
+    <p class="sub">We build custom AI solutions that save your team 10–20 hours per week. Law firms, medical practices, consulting firms, and more.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn">Get a Custom Quote</a>
+    </div>
+    <p class="fine">Starting at $5,000/month · Response within 24 hours</p>
+  </div>
+
+  <div class="clients">
+    <div class="clients-label">BUILT FOR</div>
+    <div class="client-list">
+      <span>LAW FIRMS</span>
+      <span>MEDICAL PRACTICES</span>
+      <span>CONSULTING FIRMS</span>
+      <span>REAL ESTATE AGENCIES</span>
+      <span>INSURANCE COMPANIES</span>
+    </div>
+  </div>
+
+  <section>
+    <h2>What We Build</h2>
+    <p class="section-sub">Every business has a different bottleneck. We identify yours and build a custom AI that eliminates it.</p>
+    <div class="industries">
+      <div class="industry">
+        <div class="industry-icon">⚖️</div>
+        <h3>LAW FIRMS</h3>
+        <p>AI that reviews documents 8x faster. Cut 35 hours of manual document review per week.</p>
+      </div>
+      <div class="industry">
+        <div class="industry-icon">🏥</div>
+        <h3>MEDICAL PRACTICES</h3>
+        <p>AI that processes patient records, flags urgent cases, and reduces admin time by 60%.</p>
+      </div>
+      <div class="industry">
+        <div class="industry-icon">📊</div>
+        <h3>CONSULTING FIRMS</h3>
+        <p>AI that analyzes data and generates reports in minutes instead of days.</p>
+      </div>
+      <div class="industry">
+        <div class="industry-icon">🏠</div>
+        <h3>REAL ESTATE AGENCIES</h3>
+        <p>AI that qualifies leads automatically so your agents only talk to serious buyers.</p>
+      </div>
+      <div class="industry">
+        <div class="industry-icon">📋</div>
+        <h3>INSURANCE COMPANIES</h3>
+        <p>AI that processes claims faster, reducing approval time from days to hours.</p>
+      </div>
+      <div class="industry">
+        <div class="industry-icon">🔧</div>
+        <h3>ANY INDUSTRY</h3>
+        <p>If your team does repetitive, time-consuming work — we can automate it with AI.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="math-section">
+    <h2>The Math Is Simple.</h2>
+    <p class="section-sub">Custom AI pays for itself within the first month.</p>
+    <div class="math-grid">
+      <div class="math-card">
+        <div class="math-num">20hrs</div>
+        <div class="math-label">SAVED PER WEEK</div>
+      </div>
+      <div class="math-card" style="background:#fff;color:#000;">
+        <div class="math-num">×$100</div>
+        <div class="math-label">VALUE PER HOUR</div>
+      </div>
+      <div class="math-card">
+        <div class="math-num">$8K</div>
+        <div class="math-label">SAVED PER MONTH</div>
+      </div>
+      <div class="math-card" style="background:#fff;color:#000;">
+        <div class="math-num">$5K</div>
+        <div class="math-label">YOU PAY US</div>
+      </div>
+    </div>
+    <p style="margin-top:32px;opacity:0.5;font-size:0.9rem;">Net benefit: $3,000/month in your pocket. Every month.</p>
+  </div>
+
+  <div class="example">
+    <div class="example-inner">
+      <h2>Real Example.</h2>
+      <p class="section-sub" style="opacity:0.6;line-height:1.6;margin-top:12px;">Here's exactly how the math works for a law firm.</p>
+      <div class="example-box">
+        <h3>CASE STUDY — LAW FIRM</h3>
+        <div class="example-stats">
+          <div class="stat-item">
+            <strong>40hrs</strong>
+            <span>spent on document review per week — manually</span>
+          </div>
+          <div class="stat-item">
+            <strong>5hrs</strong>
+            <span>after ClearPath AI — same work, done in 5 hours</span>
+          </div>
+          <div class="stat-item">
+            <strong>35hrs</strong>
+            <span>saved every single week</span>
+          </div>
+          <div class="stat-item">
+            <strong>$14,000</strong>
+            <span>saved per month in billable attorney time</span>
+          </div>
+        </div>
+        <div class="example-result">
+          They pay ClearPath AI $8,000/month. They save $14,000/month. <strong>Net gain: $6,000/month.</strong> The AI paid for itself in week one.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="process">
+    <h2>How It Works</h2>
+    <p class="section-sub" style="opacity:0.6;line-height:1.6;margin-top:12px;margin-bottom:48px;">From first call to live AI in under 2 weeks.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <div class="step-content">
+          <h3>Discovery Call</h3>
+          <p>We spend 30 minutes understanding your business, your biggest bottleneck, and where AI can save you the most time.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <div class="step-content">
+          <h3>Custom Proposal</h3>
+          <p>We send you a detailed proposal outlining exactly what we'll build, how long it takes, and what it will save you.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <div class="step-content">
+          <h3>We Build It</h3>
+          <p>Our team builds your custom AI solution. Most projects are live within 7–14 days.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">4</div>
+        <div class="step-content">
+          <h3>You Save Time</h3>
+          <p>Your team starts saving 10–20 hours per week immediately. We handle all maintenance and updates.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pricing-section">
+    <h2>Pricing</h2>
+    <p class="section-sub">Flat monthly rate. No hidden fees. Cancel anytime.</p>
+    <div class="price-cards">
+      <div class="price-card">
+        <div class="price-label">STARTER</div>
+        <div class="price">$5,000</div>
+        <div class="per">/month</div>
+        <ul class="price-features">
+          <li>Custom AI for one workflow</li>
+          <li>Up to 10 hours saved/week</li>
+          <li>Setup in 7 days</li>
+          <li>Monthly check-ins</li>
+          <li>Email support</li>
+        </ul>
+      </div>
+      <div class="price-card featured">
+        <div class="price-label">GROWTH</div>
+        <div class="price">$8,000</div>
+        <div class="per">/month</div>
+        <ul class="price-features">
+          <li>Custom AI for 3 workflows</li>
+          <li>Up to 20 hours saved/week</li>
+          <li>Setup in 10 days</li>
+          <li>Weekly check-ins</li>
+          <li>Priority support</li>
+        </ul>
+      </div>
+      <div class="price-card">
+        <div class="price-label">ENTERPRISE</div>
+        <div class="price">$10,000+</div>
+        <div class="per">/month</div>
+        <ul class="price-features">
+          <li>Unlimited AI workflows</li>
+          <li>20+ hours saved/week</li>
+          <li>Setup in 14 days</li>
+          <li>Dedicated account manager</li>
+          <li>24/7 support</li>
+        </ul>
+      </div>
+    </div>
+    <p style="opacity:0.4;font-size:0.85rem;">All plans include a free 30-minute discovery call.</p>
+  </div>
+
+  <div class="form-section" id="contact">
+    <h2>Get a Custom Quote</h2>
+    <p class="section-sub" style="opacity:0.6;line-height:1.6;margin-top:12px;">Tell us about your business. We'll respond within 24 hours with a custom proposal.</p>
+    <form id="contactForm">
+      <div class="form-row">
+        <input type="text" placeholder="First name" required />
+        <input type="text" placeholder="Last name" required />
+      </div>
+      <div class="form-row">
+        <input type="email" placeholder="Work email" required />
+        <input type="tel" placeholder="Phone number" />
+      </div>
+      <input type="text" placeholder="Company name" required />
+      <select required>
+        <option value="" disabled selected>Industry</option>
+        <option>Law Firm</option>
+        <option>Medical Practice</option>
+        <option>Consulting Firm</option>
+        <option>Real Estate Agency</option>
+        <option>Insurance Company</option>
+        <option>Other</option>
+      </select>
+      <textarea placeholder="What's the biggest time-waster in your business right now? What does your team spend the most time on?" required></textarea>
+      <button type="submit" class="submit-btn">REQUEST MY CUSTOM QUOTE →</button>
+      <p class="form-note">We respond within 24 hours · No commitment required</p>
+    </form>
+    <div class="success-msg" id="successMsg">
+      ✓ REQUEST RECEIVED — WE'LL BE IN TOUCH WITHIN 24 HOURS
+    </div>
+  </div>
+
+  <footer>
+    <div style="margin-bottom:16px;">
+      <a href="/">AI Receptionist</a>
+      <a href="/enterprise.html">Enterprise</a>
+    </div>
+    © 2026 ClearPath AI · clearpathai.myshopify.com
+  </footer>
+
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      this.style.display = 'none';
+      document.getElementById('successMsg').style.display = 'block';
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+
+</body>
+</html>
