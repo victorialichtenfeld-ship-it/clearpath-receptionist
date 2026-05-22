@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ClearPath AI — Promo Video</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#08080f;display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:'Inter',sans-serif;}
+
+.player{width:800px;height:450px;position:relative;overflow:hidden;background:#08080f;border-radius:12px;box-shadow:0 0 0 1px rgba(255,255,255,0.06),0 40px 80px rgba(0,0,0,0.6);}
+
+canvas{position:absolute;inset:0;z-index:0;}
+
+/* Scenes */
+.scene{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:10;opacity:0;transition:opacity 0.7s ease;pointer-events:none;padding:40px;}
+.scene.active{opacity:1;pointer-events:all;}
+
+/* Fade-up animation base */
+.fu{opacity:0;transform:translateY(16px);}
+
+/* --- SCENE 1: Brand Hero --- */
+.s1-eyebrow{font-size:11px;font-weight:600;letter-spacing:0.3em;color:#5b9cf6;text-transform:uppercase;margin-bottom:18px;}
+.s1-h1{font-family:'Syne',sans-serif;font-size:58px;font-weight:800;color:#fff;text-align:center;line-height:1.05;letter-spacing:-0.02em;}
+.s1-h1 .accent{background:linear-gradient(135deg,#5b9cf6,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.s1-sub{font-size:15px;color:rgba(255,255,255,0.45);margin-top:20px;text-align:center;font-weight:400;letter-spacing:0.01em;}
+.s1-products{display:flex;gap:10px;margin-top:28px;}
+.s1-badge{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:100px;padding:6px 16px;font-size:12px;color:rgba(255,255,255,0.55);font-weight:500;}
+
+/* --- SCENE 2: AI Receptionist --- */
+.product-label{font-size:10px;font-weight:700;letter-spacing:0.3em;color:#5b9cf6;text-transform:uppercase;margin-bottom:14px;border:1px solid rgba(91,156,246,0.3);border-radius:100px;padding:4px 14px;background:rgba(91,156,246,0.08);}
+.product-title{font-family:'Syne',sans-serif;font-size:38px;font-weight:800;color:#fff;text-align:center;line-height:1.1;letter-spacing:-0.02em;margin-bottom:8px;}
+.product-title .hl{color:#5b9cf6;}
+.product-sub{font-size:14px;color:rgba(255,255,255,0.45);text-align:center;margin-bottom:28px;max-width:420px;line-height:1.6;}
+.feat-row{display:flex;gap:12px;}
+.feat{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:16px 14px;text-align:center;width:130px;}
+.feat-icon{font-size:20px;margin-bottom:8px;}
+.feat-text{font-size:11px;color:rgba(255,255,255,0.55);font-weight:500;line-height:1.4;}
+.price-tag{margin-top:22px;font-size:13px;color:rgba(255,255,255,0.35);}
+.price-tag strong{color:#5b9cf6;font-size:20px;font-weight:700;font-family:'Syne',sans-serif;}
+
+/* --- SCENE 3: Email Assistant --- */
+.s3-layout{display:flex;align-items:center;gap:40px;width:100%;}
+.s3-left{flex:1;}
+.s3-right{width:210px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:16px;flex-shrink:0;}
+.mock-header{font-size:10px;font-weight:600;color:rgba(255,255,255,0.3);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:12px;}
+.mock-lead{border-radius:8px;padding:10px 12px;margin-bottom:8px;position:relative;}
+.mock-lead.hot{background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);}
+.mock-lead.warm{background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.15);}
+.mock-lead.cold{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);}
+.ml-badge{font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px;}
+.hot .ml-badge{color:#f87171;}
+.warm .ml-badge{color:#fbbf24;}
+.cold .ml-badge{color:rgba(255,255,255,0.3);}
+.ml-name{font-size:11px;color:#fff;font-weight:600;}
+.ml-detail{font-size:10px;color:rgba(255,255,255,0.35);margin-top:2px;}
+.s3-eyebrow{font-size:10px;font-weight:700;letter-spacing:0.3em;color:#a78bfa;text-transform:uppercase;margin-bottom:14px;border:1px solid rgba(167,139,250,0.3);border-radius:100px;padding:4px 14px;background:rgba(167,139,250,0.08);display:inline-block;}
+.s3-title{font-family:'Syne',sans-serif;font-size:30px;font-weight:800;color:#fff;line-height:1.15;letter-spacing:-0.02em;margin-bottom:10px;}
+.s3-title .hl{color:#a78bfa;}
+.s3-desc{font-size:13px;color:rgba(255,255,255,0.45);line-height:1.65;margin-bottom:18px;max-width:300px;}
+.s3-perks{list-style:none;}
+.s3-perks li{font-size:12px;color:rgba(255,255,255,0.5);margin-bottom:7px;display:flex;align-items:center;gap:8px;}
+.s3-perks li span{color:#a78bfa;font-weight:600;}
+.s3-price{margin-top:16px;font-size:12px;color:rgba(255,255,255,0.3);}
+.s3-price strong{color:#a78bfa;font-size:18px;font-weight:700;font-family:'Syne',sans-serif;}
+
+/* --- SCENE 4: Social Proof --- */
+.quote-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:28px 32px;max-width:520px;text-align:center;margin-bottom:20px;}
+.quote-mark{font-size:36px;color:rgba(91,156,246,0.3);font-family:Georgia,serif;line-height:1;margin-bottom:6px;}
+.quote-text{font-size:16px;color:rgba(255,255,255,0.75);line-height:1.65;font-weight:400;font-style:italic;}
+.quote-author{font-size:12px;color:rgba(255,255,255,0.35);margin-top:14px;font-weight:500;}
+.stats-row{display:flex;gap:32px;}
+.stat-item{text-align:center;}
+.stat-num{font-family:'Syne',sans-serif;font-size:32px;font-weight:800;color:#fff;}
+.stat-num .c1{color:#5b9cf6;}
+.stat-num .c2{color:#a78bfa;}
+.stat-desc{font-size:11px;color:rgba(255,255,255,0.35);margin-top:4px;font-weight:500;}
+
+/* --- SCENE 5: CTA --- */
+.s5-logo{font-family:'Syne',sans-serif;font-size:13px;font-weight:800;letter-spacing:0.2em;color:rgba(255,255,255,0.4);text-transform:uppercase;margin-bottom:20px;}
+.s5-h{font-family:'Syne',sans-serif;font-size:48px;font-weight:800;color:#fff;text-align:center;line-height:1.05;letter-spacing:-0.02em;margin-bottom:10px;}
+.s5-h .g{background:linear-gradient(135deg,#5b9cf6,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.s5-sub{font-size:14px;color:rgba(255,255,255,0.4);text-align:center;margin-bottom:30px;}
+.s5-btns{display:flex;gap:12px;}
+.btn-primary{background:linear-gradient(135deg,#5b9cf6,#a78bfa);color:#fff;font-family:'Inter',sans-serif;font-weight:600;font-size:13px;padding:13px 28px;border-radius:8px;border:none;cursor:pointer;letter-spacing:0.02em;transition:opacity 0.2s,transform 0.2s;}
+.btn-primary:hover{opacity:0.9;transform:translateY(-1px);}
+.btn-secondary{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.65);font-family:'Inter',sans-serif;font-weight:500;font-size:13px;padding:13px 28px;border-radius:8px;cursor:pointer;letter-spacing:0.02em;transition:background 0.2s;}
+.btn-secondary:hover{background:rgba(255,255,255,0.1);}
+.s5-url{margin-top:20px;font-size:12px;color:rgba(255,255,255,0.25);letter-spacing:0.05em;}
+.s5-url span{color:rgba(255,255,255,0.45);}
+
+/* Progress */
+#progress{position:absolute;bottom:0;left:0;height:2px;background:linear-gradient(90deg,#5b9cf6,#a78bfa);z-index:100;width:0;transition:width 50ms linear;}
+
+/* Dots */
+#dots{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:7px;z-index:100;}
+.dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.15);cursor:pointer;transition:background 0.3s,transform 0.3s;}
+.dot.active{background:#5b9cf6;transform:scale(1.5);}
+
+/* Controls */
+#controls{position:absolute;top:12px;right:14px;display:flex;gap:7px;z-index:100;}
+.ctrl{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.35);font-family:'Inter',sans-serif;font-size:10px;padding:5px 11px;border-radius:6px;cursor:pointer;transition:background 0.2s,color 0.2s;letter-spacing:0.03em;}
+.ctrl:hover{background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);}
+
+/* Logo badge */
+#logo{position:absolute;top:14px;left:16px;z-index:100;font-family:'Syne',sans-serif;font-size:12px;font-weight:800;color:rgba(255,255,255,0.5);letter-spacing:0.08em;}
+</style>
+</head>
+<body>
+<div class="player">
+  <canvas id="bg" width="800" height="450"></canvas>
+  <div id="logo">CLEARPATH AI</div>
+  <div id="progress"></div>
+
+  <!-- S1: Hero -->
+  <div class="scene active" id="s1">
+    <div class="s1-eyebrow fu">AI Tools for Business</div>
+    <div class="s1-h1 fu">Put Your Business<br>on <span class="accent">Autopilot.</span></div>
+    <div class="s1-sub fu">AI tools that work while you don't — built for real businesses.</div>
+    <div class="s1-products fu">
+      <div class="s1-badge">📞 AI Receptionist</div>
+      <div class="s1-badge">✉️ Email Assistant</div>
+    </div>
+  </div>
+
+  <!-- S2: AI Receptionist -->
+  <div class="scene" id="s2">
+    <div class="product-label fu">Product 01</div>
+    <div class="product-title fu">AI <span class="hl">Receptionist</span></div>
+    <div class="product-sub fu">Your phone answered 24/7 — no staff required.</div>
+    <div class="feat-row">
+      <div class="feat fu"><div class="feat-icon">📞</div><div class="feat-text">Answers every call</div></div>
+      <div class="feat fu"><div class="feat-icon">📅</div><div class="feat-text">Books appointments</div></div>
+      <div class="feat fu"><div class="feat-icon">✉️</div><div class="feat-text">Takes messages</div></div>
+      <div class="feat fu"><div class="feat-icon">🔄</div><div class="feat-text">Transfers to staff</div></div>
+    </div>
+    <div class="price-tag fu">Setup in 10 minutes &nbsp;·&nbsp; <strong>$750</strong>/month &nbsp;·&nbsp; Cancel anytime</div>
+  </div>
+
+  <!-- S3: Email Assistant -->
+  <div class="scene" id="s3">
+    <div class="s3-layout">
+      <div class="s3-left">
+        <div class="s3-eyebrow fu">Product 02</div>
+        <div class="s3-title fu">Email <span class="hl">Assistant</span><br>for Real Estate</div>
+        <div class="s3-desc fu">AI scans your inbox and tells you exactly who's ready to buy or sell — and what to say.</div>
+        <ul class="s3-perks">
+          <li class="fu"><span>🔥</span> Hot lead detection</li>
+          <li class="fu"><span>✍️</span> Auto-drafted replies</li>
+          <li class="fu"><span>📋</span> Daily action list</li>
+        </ul>
+        <div class="s3-price fu">Connect Gmail in 30 seconds &nbsp;·&nbsp; <strong>$400</strong>/month</div>
+      </div>
+      <div class="s3-right fu">
+        <div class="mock-header">Your Inbox</div>
+        <div class="mock-lead hot">
+          <div class="ml-badge">🔥 Hot Lead</div>
+          <div class="ml-name">Sarah M.</div>
+          <div class="ml-detail">Ready to list — $2.1M property</div>
+        </div>
+        <div class="mock-lead warm">
+          <div class="ml-badge">⚡ Follow Up</div>
+          <div class="ml-name">James K.</div>
+          <div class="ml-detail">Needs reply — 3 days old</div>
+        </div>
+        <div class="mock-lead cold">
+          <div class="ml-badge">· Low Priority</div>
+          <div class="ml-name">Newsletter</div>
+          <div class="ml-detail">Skip for now</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- S4: Social Proof -->
+  <div class="scene" id="s4">
+    <div class="quote-card fu">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">We were missing 20+ calls a week after hours. ClearPath AI now handles every single one and books appointments while we sleep.</div>
+      <div class="quote-author">— Dental office owner, Miami FL</div>
+    </div>
+    <div class="stats-row">
+      <div class="stat-item fu">
+        <div class="stat-num"><span class="c1">24/7</span></div>
+        <div class="stat-desc">Always available</div>
+      </div>
+      <div class="stat-item fu">
+        <div class="stat-num"><span class="c2">10 min</span></div>
+        <div class="stat-desc">Setup time</div>
+      </div>
+      <div class="stat-item fu">
+        <div class="stat-num"><span class="c1">$0</span></div>
+        <div class="stat-desc">To start free trial</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- S5: CTA -->
+  <div class="scene" id="s5">
+    <div class="s5-logo fu">ClearPath AI</div>
+    <div class="s5-h fu">Start Your Free<br><span class="g">Trial Today.</span></div>
+    <div class="s5-sub fu">No contracts. No setup fees. Cancel anytime.</div>
+    <div class="s5-btns">
+      <button class="btn-primary fu" onclick="window.open('https://clearpath-receptionist.vercel.app','_blank')">📞 AI Receptionist</button>
+      <button class="btn-secondary fu" onclick="window.open('https://clearpath-email-ai.vercel.app','_blank')">✉️ Email Assistant</button>
+    </div>
+    <div class="s5-url fu">clearpath-ai.myshopify.com</div>
+  </div>
+
+  <div id="dots">
+    <div class="dot active"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+  </div>
+  <div id="controls">
+    <button class="ctrl" id="prevBtn">← Prev</button>
+    <button class="ctrl" id="nextBtn">Next →</button>
+    <button class="ctrl" id="replayBtn">↺ Replay</button>
+  </div>
+</div>
+
+<script>
+// ---- Canvas BG ----
+const canvas = document.getElementById('bg');
+const ctx = canvas.getContext('2d');
+const W=800,H=450;
+const pts = Array.from({length:50},()=>({
+  x:Math.random()*W,y:Math.random()*H,
+  vx:(Math.random()-.5)*.2,vy:(Math.random()-.5)*.2,
+  r:Math.random()*1.2+.3,a:Math.random()*.3+.08
+}));
+function lerp(a,b,t){return a+(b-a)*t;}
+function genPath(){
+  const p=[];let x=Math.random()*W,y=Math.random()*H;
+  for(let i=0;i<7;i++){p.push({x,y});x=Math.max(0,Math.min(W,x+(Math.random()-.5)*180));y=Math.max(0,Math.min(H,y+(Math.random()-.28)*130));}
+  return p;
+}
+function ptOn(p,t){const s=(p.length-1)*t,i=Math.min(Math.floor(s),p.length-2),f=s-i;return{x:lerp(p[i].x,p[i+1].x,f),y:lerp(p[i].y,p[i+1].y,f)};}
+const lines=Array.from({length:5},()=>({p:genPath(),t:Math.random(),sp:.0005+Math.random()*.0005,a:.05+Math.random()*.06}));
+const COLORS=['91,156,246','167,139,250'];
+function drawBg(){
+  ctx.clearRect(0,0,W,H);
+  // subtle grid
+  for(let gx=50;gx<W;gx+=50)for(let gy=40;gy<H;gy+=40){ctx.beginPath();ctx.arc(gx,gy,.8,0,Math.PI*2);ctx.fillStyle='rgba(255,255,255,0.025)';ctx.fill();}
+  // particles
+  pts.forEach((p,i)=>{
+    const c=COLORS[i%2];
+    ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle=`rgba(${c},${p.a})`;ctx.fill();
+    p.x+=p.vx;p.y+=p.vy;
+    if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;
+  });
+  // connections
+  for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){
+    const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);
+    if(d<70){ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);
+      ctx.strokeStyle=`rgba(91,156,246,${.04*(1-d/70)})`;ctx.lineWidth=.5;ctx.stroke();}
+  }
+  // animated lines
+  lines.forEach((l,li)=>{
+    l.t+=l.sp;if(l.t>1){l.t=0;l.p=genPath();}
+    const st=Math.max(0,l.t-.15);
+    ctx.beginPath();const sp=ptOn(l.p,st);ctx.moveTo(sp.x,sp.y);
+    for(let t=st;t<=l.t;t+=.01){const pt=ptOn(l.p,t);ctx.lineTo(pt.x,pt.y);}
+    const c=COLORS[li%2];
+    ctx.strokeStyle=`rgba(${c},${l.a})`;ctx.lineWidth=.8;ctx.stroke();
+    const h=ptOn(l.p,l.t);
+    const g=ctx.createRadialGradient(h.x,h.y,0,h.x,h.y,5);
+    g.addColorStop(0,`rgba(${c},.9)`);g.addColorStop(1,`rgba(${c},0)`);
+    ctx.beginPath();ctx.arc(h.x,h.y,5,0,Math.PI*2);ctx.fillStyle=g;ctx.fill();
+  });
+  requestAnimationFrame(drawBg);
+}
+drawBg();
+
+// ---- Animation helper ----
+function anim(el,props,delay,dur=650){
+  if(!el)return;
+  // reset
+  el.style.transition='none';
+  el.style.opacity=props.opacity?props.opacity[0]:el.style.opacity;
+  let tf='';
+  if(props.translateY) tf+=`translateY(${props.translateY[0]}px) `;
+  if(props.scale) tf+=`scale(${props.scale[0]}) `;
+  if(tf) el.style.transform=tf.trim();
+  setTimeout(()=>{
+    el.style.transition=`opacity ${dur}ms cubic-bezier(.22,1,.36,1), transform ${dur}ms cubic-bezier(.22,1,.36,1)`;
+    if(props.opacity) el.style.opacity=props.opacity[1];
+    let tf2='';
+    if(props.translateY) tf2+=`translateY(${props.translateY[1]}px) `;
+    if(props.scale) tf2+=`scale(${props.scale[1]}) `;
+    if(tf2) el.style.transform=tf2.trim();
+  },delay);
+}
+
+const sceneInit = {
+  s1(el){
+    const els=el.querySelectorAll('.fu');
+    els.forEach((e,i)=>anim(e,{opacity:[0,1],translateY:[14,0]},280+i*160));
+  },
+  s2(el){
+    const els=el.querySelectorAll('.fu');
+    els.forEach((e,i)=>anim(e,{opacity:[0,1],translateY:[14,0]},200+i*130));
+  },
+  s3(el){
+    const els=el.querySelectorAll('.fu');
+    els.forEach((e,i)=>anim(e,{opacity:[0,1],translateY:[14,0]},150+i*110));
+  },
+  s4(el){
+    const els=el.querySelectorAll('.fu');
+    els.forEach((e,i)=>anim(e,{opacity:[0,1],translateY:[14,0]},200+i*180));
+  },
+  s5(el){
+    const els=el.querySelectorAll('.fu');
+    els.forEach((e,i)=>anim(e,{opacity:[0,1],translateY:[14,0]},200+i*150));
+  }
+};
+
+// ---- Scene player ----
+const scenes=Array.from(document.querySelectorAll('.scene'));
+const dotsEl=Array.from(document.querySelectorAll('.dot'));
+const prog=document.getElementById('progress');
+const IDS=['s1','s2','s3','s4','s5'];
+const DURATION=5000;
+let cur=0,timer=null;
+
+function resetFu(el){el.querySelectorAll('.fu').forEach(e=>{e.style.transition='none';e.style.opacity=0;e.style.transform='translateY(14px)';});}
+
+function goTo(idx){
+  scenes[cur].classList.remove('active');
+  dotsEl[cur].classList.remove('active');
+  cur=((idx%5)+5)%5;
+  resetFu(scenes[cur]);
+  scenes[cur].classList.add('active');
+  dotsEl[cur].classList.add('active');
+  sceneInit[IDS[cur]](scenes[cur]);
+  clearInterval(timer);
+  startTimer();
+}
+
+function startTimer(){
+  let el=0;
+  prog.style.transition='none';prog.style.width='0%';
+  clearInterval(timer);
+  timer=setInterval(()=>{
+    el+=50;
+    const p=Math.min(100,(el/DURATION)*100);
+    prog.style.transition='width 50ms linear';prog.style.width=p+'%';
+    if(el>=DURATION){clearInterval(timer);goTo(cur+1);}
+  },50);
+}
+
+dotsEl.forEach((d,i)=>d.addEventListener('click',()=>goTo(i)));
+document.getElementById('prevBtn').addEventListener('click',()=>goTo(cur-1));
+document.getElementById('nextBtn').addEventListener('click',()=>goTo(cur+1));
+document.getElementById('replayBtn').addEventListener('click',()=>goTo(0));
+
+// Init
+resetFu(scenes[0]);
+sceneInit.s1(scenes[0]);
+startTimer();
+</script>
+</body>
+</html>
