@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Tools — V&M AI Agency</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:'Helvetica Neue',Arial,sans-serif;background:#fff;color:#0a0a0a;}
+    nav{display:flex;justify-content:space-between;align-items:center;padding:16px 40px;background:#fff;border-bottom:1px solid #eee;position:sticky;top:0;z-index:100;}
+    .nav-logo{font-weight:900;font-size:1rem;display:flex;align-items:center;gap:10px;text-decoration:none;color:#0a0a0a;}
+    .nav-logo-icon{width:32px;height:32px;background:#0a0a0a;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:0.7rem;font-weight:900;}
+    .nav-logo-text span{color:#2563eb;}
+    .nav-links{display:flex;gap:28px;font-size:0.875rem;}
+    .nav-links a{text-decoration:none;color:#555;}
+    .nav-links a:hover{color:#0a0a0a;}
+    .nav-cta{background:#1a3a2a;color:#fff;padding:10px 22px;border-radius:999px;font-size:0.875rem;font-weight:600;text-decoration:none;white-space:nowrap;}
+
+    .page-hero{background:#0a0a0a;color:#fff;padding:80px 40px;text-align:center;}
+    .page-label{font-size:0.68rem;letter-spacing:2px;color:#60a5fa;font-weight:700;margin-bottom:14px;}
+    .page-hero h1{font-size:clamp(2rem,4vw,3rem);font-weight:900;line-height:1.15;margin-bottom:14px;}
+    .page-hero h1 span{color:#60a5fa;}
+    .page-hero p{opacity:0.6;font-size:1rem;max-width:520px;margin:0 auto;line-height:1.7;}
+    .hero-note{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);padding:8px 18px;border-radius:999px;font-size:0.8rem;color:#93c5fd;margin-top:24px;}
+
+    .tools-wrap{max-width:1100px;margin:0 auto;padding:80px 40px;}
+    .tools-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;}
+
+    .tool-card{border:1px solid #e8e8e8;border-radius:24px;overflow:hidden;background:#fff;transition:box-shadow 0.2s;}
+    .tool-card:hover{box-shadow:0 8px 32px rgba(0,0,0,0.08);}
+    .tool-card.featured{border-color:#2563eb;box-shadow:0 0 0 2px #bfdbfe;}
+    .tool-img{height:180px;display:flex;align-items:center;justify-content:center;font-size:3.5rem;}
+    .tool-img.blue{background:linear-gradient(135deg,#eff6ff,#dbeafe);}
+    .tool-img.green{background:linear-gradient(135deg,#f0fdf4,#dcfce7);}
+    .tool-img.orange{background:linear-gradient(135deg,#fff7ed,#fed7aa);}
+    .tool-img.purple{background:linear-gradient(135deg,#faf5ff,#e9d5ff);}
+    .tool-body{padding:28px;}
+    .tool-tag{display:inline-flex;gap:6px;align-items:center;font-size:0.65rem;font-weight:700;letter-spacing:1.5px;padding:4px 12px;border-radius:999px;margin-bottom:14px;}
+    .tag-free{background:#dcfce7;color:#15803d;}
+    .tag-featured{background:#eff6ff;color:#1d4ed8;}
+    .tool-body h3{font-size:1.2rem;font-weight:800;margin-bottom:8px;}
+    .tool-body p{font-size:0.87rem;color:#555;line-height:1.65;margin-bottom:20px;}
+    .tool-list{list-style:none;display:flex;flex-direction:column;gap:7px;margin-bottom:24px;}
+    .tool-list li{font-size:0.82rem;color:#374151;display:flex;align-items:flex-start;gap:8px;}
+    .tool-list li::before{content:"✓";color:#16a34a;font-weight:700;flex-shrink:0;}
+    .tool-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:999px;font-weight:700;font-size:0.875rem;text-decoration:none;}
+    .tb-blue{background:#2563eb;color:#fff;}
+    .tb-blue:hover{background:#1d4ed8;}
+    .tb-dark{background:#0a0a0a;color:#fff;}
+    .tb-dark:hover{background:#222;}
+    .tb-outline{border:2px solid #e8e8e8;color:#0a0a0a;}
+    .tb-outline:hover{border-color:#2563eb;color:#2563eb;}
+
+    .scanner-cta{background:#f5f4ef;border-radius:24px;padding:56px 40px;margin:0 0 32px;text-align:center;}
+    .scanner-cta h2{font-size:1.8rem;font-weight:900;margin-bottom:10px;}
+    .scanner-cta p{color:#666;font-size:0.92rem;margin-bottom:32px;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.7;}
+    .scanner-box{background:#fff;border-radius:14px;padding:8px 8px 8px 20px;display:flex;align-items:center;max-width:580px;margin:0 auto 12px;box-shadow:0 4px 24px rgba(0,0,0,0.07);border:1px solid #e8e8e8;}
+    .scanner-box input{flex:1;border:none;outline:none;font-size:0.95rem;color:#333;background:transparent;padding:8px 0;}
+    .scanner-box input::placeholder{color:#bbb;}
+    .scanner-box button{background:#2563eb;color:#fff;border:none;padding:12px 22px;border-radius:10px;font-weight:700;font-size:0.875rem;cursor:pointer;white-space:nowrap;}
+    .scanner-note{font-size:0.75rem;color:#aaa;}
+
+    .dark-cta{background:#0a0a0a;color:#fff;padding:80px 40px;text-align:center;border-radius:24px;margin:0 40px 80px;}
+    .dark-cta h2{font-size:clamp(1.8rem,3vw,2.4rem);font-weight:900;margin:0 auto 14px;max-width:540px;line-height:1.2;}
+    .dark-cta p{opacity:0.55;margin-bottom:36px;font-size:0.95rem;}
+    .dc-btns{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;}
+    .btn-w{background:#fff;color:#0a0a0a;padding:14px 32px;border-radius:999px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:8px;}
+    .btn-g{border:1px solid rgba(255,255,255,0.3);color:#fff;padding:14px 32px;border-radius:999px;font-weight:600;text-decoration:none;}
+
+    footer{background:#0a0a0a;color:#fff;padding:48px 40px 24px;}
+    .ft-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:32px;flex-wrap:wrap;gap:20px;}
+    .ft-logo{font-weight:900;font-size:1rem;display:flex;align-items:center;gap:8px;}
+    .ft-logo-icon{width:28px;height:28px;background:#fff;border-radius:6px;display:flex;align-items:center;justify-content:center;color:#0a0a0a;font-size:0.6rem;font-weight:900;}
+    .ft-logo span{color:#2563eb;}
+    .ft-links{display:flex;gap:24px;}
+    .ft-links a{font-size:0.85rem;color:#888;text-decoration:none;}
+    .ft-links a:hover{color:#fff;}
+    .ft-bot{border-top:1px solid #1a1a1a;padding-top:16px;font-size:0.78rem;opacity:0.35;text-align:center;}
+
+    @media(max-width:900px){
+      nav{padding:14px 20px;}.nav-links{display:none;}
+      .tools-grid{grid-template-columns:1fr;}
+      .tools-wrap{padding:56px 20px;}
+      .dark-cta{margin:0 16px 60px;border-radius:16px;}
+      .scanner-cta{padding:40px 20px;}
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-icon">VM</div>
+    <div class="nav-logo-text">V&amp;M <span>AI Agency</span></div>
+  </a>
+  <div class="nav-links">
+    <a href="solutions.html">Solutions</a>
+    <a href="free-tools.html">Free Tools</a>
+    <a href="enterprise.html">Enterprise</a>
+    <a href="blog.html">Blog</a>
+    <a href="book-a-call.html">Book a Call</a>
+  </div>
+  <a href="book-a-call.html" class="nav-cta">Book a 15-min Call →</a>
+</nav>
+
+<div class="page-hero">
+  <div class="page-label">FREE TOOLS</div>
+  <h1>Real AI Tools.<br><span>Zero Cost.</span></h1>
+  <p>Try these tools right now to see what AI can actually do for your business — no credit card, no account needed.</p>
+  <div class="hero-note">🎁 All tools below are 100% free to use</div>
+</div>
+
+<div class="tools-wrap">
+
+  <div class="scanner-cta">
+    <h2>Is AI Recommending Your Business?</h2>
+    <p>When someone asks ChatGPT or Google Gemini for a recommendation in your industry — are they getting your name? Find out in 30 seconds.</p>
+    <div class="scanner-box">
+      <input type="text" placeholder="Enter your business name or website...">
+      <button onclick="doScan()">Scan for Free →</button>
+    </div>
+    <div class="scanner-note">Free · No account needed · Results in 30 seconds</div>
+  </div>
+
+  <div class="tools-grid">
+
+    <!-- Email Scanner -->
+    <div class="tool-card featured">
+      <div class="tool-img blue">✉️</div>
+      <div class="tool-body">
+        <div class="tool-tag tag-featured">⭐ FEATURED TOOL</div>
+        <h3>AI Email Scanner</h3>
+        <p>Connect your Gmail and get an instant AI analysis of your last 20 emails. See which leads are hot, what needs urgent attention, and get a draft reply for your most important email.</p>
+        <ul class="tool-list">
+          <li>Ranks every email: Hot Lead, Urgent, Follow Up</li>
+          <li>Identifies leads that went cold and need a nudge</li>
+          <li>Writes a reply for your #1 priority email</li>
+          <li>Works in under 30 seconds</li>
+          <li>Gmail read-only access — your data stays private</li>
+        </ul>
+        <a href="https://clearpath-email-ai.vercel.app" class="tool-btn tb-blue" target="_blank">Try Email Scanner Free →</a>
+      </div>
+    </div>
+
+    <!-- AI Visibility Checker -->
+    <div class="tool-card">
+      <div class="tool-img green">🔍</div>
+      <div class="tool-body">
+        <div class="tool-tag tag-free">FREE TOOL</div>
+        <h3>AI Visibility Score</h3>
+        <p>Get a free report showing whether your business appears when people ask ChatGPT, Perplexity, Gemini, and Grok for recommendations in your industry.</p>
+        <ul class="tool-list">
+          <li>Checks all 6 major AI platforms</li>
+          <li>Competitor comparison included</li>
+          <li>Actionable fixes to improve your ranking</li>
+          <li>PDF report emailed to you</li>
+        </ul>
+        <a href="book-a-call.html" class="tool-btn tb-outline">Get Your Free Report →</a>
+      </div>
+    </div>
+
+    <!-- Call Script Generator -->
+    <div class="tool-card">
+      <div class="tool-img orange">📞</div>
+      <div class="tool-body">
+        <div class="tool-tag tag-free">FREE TOOL</div>
+        <h3>AI Call Script Generator</h3>
+        <p>Generate a custom phone script for your business in seconds. Works for cold calls, follow-ups, after-hours recordings, and voicemail drops. Just enter your industry and we'll handle the rest.</p>
+        <ul class="tool-list">
+          <li>Dental, real estate, med spa, law, and more</li>
+          <li>Cold call, follow-up, and voicemail versions</li>
+          <li>Sounds human, not robotic</li>
+          <li>Download as PDF or copy instantly</li>
+        </ul>
+        <a href="book-a-call.html" class="tool-btn tb-outline">Generate Your Script →</a>
+      </div>
+    </div>
+
+    <!-- ROI Calculator -->
+    <div class="tool-card">
+      <div class="tool-img purple">📊</div>
+      <div class="tool-body">
+        <div class="tool-tag tag-free">FREE TOOL</div>
+        <h3>AI ROI Calculator</h3>
+        <p>Enter your current numbers and see exactly how much revenue you're losing to missed calls, slow follow-ups, and manual admin. Then see what AI automation would save you per month.</p>
+        <ul class="tool-list">
+          <li>Missed call calculator (what each call is worth)</li>
+          <li>Time savings estimator per automation</li>
+          <li>Break-even analysis for AI investment</li>
+          <li>Monthly savings projection</li>
+        </ul>
+        <a href="book-a-call.html" class="tool-btn tb-outline">Calculate My ROI →</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="dark-cta">
+  <h2>Want These Tools Running Automatically?</h2>
+  <p>We can set up a full AI system that does all of this 24/7 — no manual scanning, no missed calls, no lost leads.</p>
+  <div class="dc-btns">
+    <a href="book-a-call.html" class="btn-w">🚀 Book a Free Call</a>
+    <a href="solutions.html" class="btn-g">View All Solutions</a>
+  </div>
+</div>
+
+<footer>
+  <div class="ft-row">
+    <div class="ft-logo">
+      <div class="ft-logo-icon">VM</div>
+      V&amp;M <span>AI Agency</span>
+    </div>
+    <div class="ft-links">
+      <a href="solutions.html">Solutions</a>
+      <a href="free-tools.html">Free Tools</a>
+      <a href="blog.html">Blog</a>
+      <a href="book-a-call.html">Book a Call</a>
+    </div>
+  </div>
+  <div class="ft-bot">© 2025 V&M AI Agency. All rights reserved.</div>
+</footer>
+
+<script>
+  function doScan(){
+    const input = document.querySelector('.scanner-box input');
+    const val = input.value.trim();
+    if(!val){input.focus();return;}
+    window.location.href='book-a-call.html';
+  }
+</script>
+</body>
+</html>

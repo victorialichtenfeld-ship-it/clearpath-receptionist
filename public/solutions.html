@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solutions — V&M AI Agency</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:'Helvetica Neue',Arial,sans-serif;background:#fff;color:#0a0a0a;}
+    nav{display:flex;justify-content:space-between;align-items:center;padding:16px 40px;background:#fff;border-bottom:1px solid #eee;position:sticky;top:0;z-index:100;}
+    .nav-logo{font-weight:900;font-size:1rem;display:flex;align-items:center;gap:10px;text-decoration:none;color:#0a0a0a;}
+    .nav-logo-icon{width:32px;height:32px;background:#0a0a0a;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:0.7rem;font-weight:900;}
+    .nav-logo-text span{color:#2563eb;}
+    .nav-links{display:flex;gap:28px;font-size:0.875rem;}
+    .nav-links a{text-decoration:none;color:#555;}
+    .nav-links a:hover{color:#0a0a0a;}
+    .nav-cta{background:#1a3a2a;color:#fff;padding:10px 22px;border-radius:999px;font-size:0.875rem;font-weight:600;text-decoration:none;white-space:nowrap;}
+
+    .page-hero{background:#0a0a0a;color:#fff;padding:80px 40px;text-align:center;}
+    .page-label{font-size:0.68rem;letter-spacing:2px;color:#60a5fa;font-weight:700;margin-bottom:14px;}
+    .page-hero h1{font-size:clamp(2rem,4vw,3.2rem);font-weight:900;line-height:1.15;margin-bottom:14px;}
+    .page-hero h1 span{color:#60a5fa;}
+    .page-hero p{opacity:0.6;font-size:1rem;max-width:560px;margin:0 auto;line-height:1.7;}
+
+    .sol-section{max-width:1100px;margin:0 auto;padding:80px 40px;}
+    .sol-header{text-align:center;margin-bottom:60px;}
+    .sec-label{font-size:0.68rem;letter-spacing:2px;color:#2563eb;font-weight:700;margin-bottom:10px;}
+    .sol-header h2{font-size:clamp(1.8rem,3vw,2.4rem);font-weight:900;line-height:1.18;margin-bottom:10px;}
+    .sol-header p{color:#666;font-size:0.95rem;line-height:1.7;max-width:560px;margin:0 auto;}
+
+    .sol-card{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-bottom:96px;}
+    .sol-card:nth-child(even) .sol-visual{order:1;}
+    .sol-card:nth-child(even) .sol-text{order:2;}
+    .sol-tag{display:inline-flex;align-items:center;gap:6px;background:#eff6ff;border:1px solid #bfdbfe;color:#1d4ed8;font-size:0.68rem;font-weight:700;letter-spacing:1px;padding:5px 14px;border-radius:999px;margin-bottom:18px;}
+    .sol-text h3{font-size:1.6rem;font-weight:900;line-height:1.2;margin-bottom:14px;}
+    .sol-text p{font-size:0.92rem;color:#555;line-height:1.7;margin-bottom:24px;}
+    .sol-list{list-style:none;margin-bottom:28px;display:flex;flex-direction:column;gap:10px;}
+    .sol-list li{font-size:0.88rem;color:#374151;display:flex;align-items:flex-start;gap:10px;}
+    .sol-list li::before{content:"✓";color:#16a34a;font-weight:700;flex-shrink:0;margin-top:1px;}
+    .sol-stat{display:flex;gap:24px;margin-bottom:28px;}
+    .ss{background:#f0fdf4;border-radius:12px;padding:14px 18px;flex:1;text-align:center;}
+    .ss-num{font-size:1.6rem;font-weight:900;color:#15803d;}
+    .ss-lbl{font-size:0.72rem;color:#555;margin-top:2px;}
+    .sol-btn{display:inline-flex;align-items:center;gap:8px;background:#2563eb;color:#fff;padding:13px 26px;border-radius:999px;font-weight:700;font-size:0.88rem;text-decoration:none;}
+    .sol-btn:hover{background:#1d4ed8;}
+
+    .sol-visual{background:#f8f9ff;border-radius:24px;padding:32px;min-height:320px;display:flex;flex-direction:column;gap:14px;border:1px solid #e8e8e8;}
+    .visual-head{font-size:0.72rem;letter-spacing:1px;color:#2563eb;font-weight:700;margin-bottom:6px;}
+    .chat-bubble{padding:12px 16px;border-radius:12px;font-size:0.82rem;line-height:1.5;max-width:85%;}
+    .cb-in{background:#e8f4ff;color:#1e40af;align-self:flex-start;border-bottom-left-radius:4px;}
+    .cb-out{background:#2563eb;color:#fff;align-self:flex-end;border-bottom-right-radius:4px;}
+    .visual-metric{background:#fff;border-radius:12px;padding:16px 20px;border:1px solid #e8e8e8;display:flex;justify-content:space-between;align-items:center;}
+    .vm-label{font-size:0.8rem;color:#555;}
+    .vm-val{font-size:1.2rem;font-weight:800;color:#2563eb;}
+    .email-item{background:#fff;border-radius:10px;padding:12px 16px;border:1px solid #e8e8e8;border-left:4px solid #2563eb;}
+    .ei-tag{font-size:0.62rem;letter-spacing:1px;font-weight:700;color:#1d4ed8;margin-bottom:4px;}
+    .ei-sub{font-size:0.82rem;font-weight:600;margin-bottom:2px;}
+    .ei-from{font-size:0.72rem;color:#999;}
+    .email-item.hot{border-left-color:#ef4444;}
+    .email-item.hot .ei-tag{color:#ef4444;}
+
+    .dark-cta{background:#0a0a0a;color:#fff;padding:80px 40px;text-align:center;border-radius:24px;margin:0 40px 80px;}
+    .dark-cta h2{font-size:clamp(1.8rem,3vw,2.6rem);font-weight:900;margin:0 auto 14px;max-width:600px;line-height:1.2;}
+    .dark-cta p{opacity:0.55;margin-bottom:36px;font-size:0.95rem;}
+    .dc-btns{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;}
+    .btn-w{background:#fff;color:#0a0a0a;padding:14px 32px;border-radius:999px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:8px;}
+    .btn-g{border:1px solid rgba(255,255,255,0.3);color:#fff;padding:14px 32px;border-radius:999px;font-weight:600;text-decoration:none;}
+
+    footer{background:#0a0a0a;color:#fff;padding:48px 40px 24px;}
+    .ft-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:32px;flex-wrap:wrap;gap:20px;}
+    .ft-logo{font-weight:900;font-size:1rem;display:flex;align-items:center;gap:8px;}
+    .ft-logo-icon{width:28px;height:28px;background:#fff;border-radius:6px;display:flex;align-items:center;justify-content:center;color:#0a0a0a;font-size:0.6rem;font-weight:900;}
+    .ft-logo span{color:#2563eb;}
+    .ft-links{display:flex;gap:24px;}
+    .ft-links a{font-size:0.85rem;color:#888;text-decoration:none;}
+    .ft-links a:hover{color:#fff;}
+    .ft-bot{border-top:1px solid #1a1a1a;padding-top:16px;font-size:0.78rem;opacity:0.35;text-align:center;}
+
+    @media(max-width:900px){
+      nav{padding:14px 20px;}.nav-links{display:none;}
+      .sol-card{grid-template-columns:1fr;gap:32px;}
+      .sol-card:nth-child(even) .sol-visual{order:unset;}
+      .sol-card:nth-child(even) .sol-text{order:unset;}
+      .sol-section{padding:56px 20px;}
+      .dark-cta{margin:0 16px 60px;border-radius:16px;}
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-icon">VM</div>
+    <div class="nav-logo-text">V&amp;M <span>AI Agency</span></div>
+  </a>
+  <div class="nav-links">
+    <a href="solutions.html">Solutions</a>
+    <a href="free-tools.html">Free Tools</a>
+    <a href="enterprise.html">Enterprise</a>
+    <a href="blog.html">Blog</a>
+    <a href="book-a-call.html">Book a Call</a>
+  </div>
+  <a href="book-a-call.html" class="nav-cta">Book a 15-min Call →</a>
+</nav>
+
+<div class="page-hero">
+  <div class="page-label">AI SOLUTIONS</div>
+  <h1>Everything We Build<br><span>For Your Business</span></h1>
+  <p>From AI receptionists to full inbox automation — every system is custom-built for your workflow and live within days.</p>
+</div>
+
+<div class="sol-section">
+  <div class="sol-header">
+    <div class="sec-label">WHAT WE DO</div>
+    <h2>Five Ways We Save You 10–20 Hours Every Week</h2>
+    <p>Each solution below can run standalone or be stacked together as part of a full AI system for your business.</p>
+  </div>
+
+  <!-- AI Receptionist -->
+  <div class="sol-card">
+    <div class="sol-text">
+      <div class="sol-tag">📞 MOST POPULAR</div>
+      <h3>AI Receptionist</h3>
+      <p>Never miss a call again. Our AI answers your phones 24/7, qualifies leads, books appointments straight to your calendar, and sends confirmations — all without a human touching it.</p>
+      <div class="sol-stat">
+        <div class="ss"><div class="ss-num">100%</div><div class="ss-lbl">Calls answered</div></div>
+        <div class="ss"><div class="ss-num">24/7</div><div class="ss-lbl">Always on</div></div>
+        <div class="ss"><div class="ss-num">48hr</div><div class="ss-lbl">Go-live time</div></div>
+      </div>
+      <ul class="sol-list">
+        <li>Answers calls with your business name and script</li>
+        <li>Books appointments directly to Google Calendar or any system</li>
+        <li>Sends SMS confirmations to callers instantly</li>
+        <li>Escalates to you for complex or urgent calls</li>
+        <li>Works on your existing phone number — no switching</li>
+      </ul>
+      <a href="book-a-call.html" class="sol-btn">Get This System →</a>
+    </div>
+    <div class="sol-visual">
+      <div class="visual-head">LIVE CALL DEMO</div>
+      <div class="chat-bubble cb-in">"Hi, I'd like to schedule a consultation for next Tuesday."</div>
+      <div class="chat-bubble cb-out">Sure! I have 10am or 2pm available on Tuesday. Which works best for you?</div>
+      <div class="chat-bubble cb-in">"10am please. My name is Sarah Johnson."</div>
+      <div class="chat-bubble cb-out">Perfect Sarah! I've booked you for Tuesday at 10am. You'll get a confirmation text in just a moment. Is there anything else I can help you with?</div>
+      <div class="visual-metric">
+        <div class="vm-label">Appointment booked in</div>
+        <div class="vm-val">47 sec</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Email AI -->
+  <div class="sol-card">
+    <div class="sol-visual">
+      <div class="visual-head">INBOX ANALYSIS — LIVE</div>
+      <div class="email-item hot">
+        <div class="ei-tag">🔥 HOT LEAD</div>
+        <div class="ei-sub">Re: Ready to list my property ASAP</div>
+        <div class="ei-from">Mike T. — 2 hours ago</div>
+      </div>
+      <div class="email-item">
+        <div class="ei-tag">⚠️ URGENT</div>
+        <div class="ei-sub">Follow up on my quote from last week</div>
+        <div class="ei-from">Jennifer R. — Yesterday</div>
+      </div>
+      <div class="email-item">
+        <div class="ei-tag">📋 FOLLOW UP</div>
+        <div class="ei-sub">We spoke about your AI services</div>
+        <div class="ei-from">David L. — 4 days ago</div>
+      </div>
+      <div class="visual-metric">
+        <div class="vm-label">Emails analyzed</div>
+        <div class="vm-val">20 in 12 sec</div>
+      </div>
+    </div>
+    <div class="sol-text">
+      <div class="sol-tag">✉️ EMAIL AI</div>
+      <h3>AI Email Assistant</h3>
+      <p>Stop drowning in your inbox. Our AI scans your emails, ranks them by urgency, flags hot leads ready to buy, and even drafts replies — so you always work on what matters most.</p>
+      <div class="sol-stat">
+        <div class="ss"><div class="ss-num">12s</div><div class="ss-lbl">To scan 20 emails</div></div>
+        <div class="ss"><div class="ss-num">0</div><div class="ss-lbl">Missed leads</div></div>
+        <div class="ss"><div class="ss-num">5hr</div><div class="ss-lbl">Saved/week avg</div></div>
+      </div>
+      <ul class="sol-list">
+        <li>Connects to your Gmail with one click (read-only)</li>
+        <li>Ranks every email: Hot Lead, Urgent, Follow Up, Low Priority</li>
+        <li>Drafts a perfect reply for the most important email</li>
+        <li>Identifies leads that went cold and need a nudge</li>
+        <li>Industry-specific analysis (real estate, dental, law, etc.)</li>
+      </ul>
+      <a href="free-tools.html" class="sol-btn">Try It Free →</a>
+    </div>
+  </div>
+
+  <!-- Auto Follow-Up -->
+  <div class="sol-card">
+    <div class="sol-text">
+      <div class="sol-tag">🔄 FOLLOW-UP</div>
+      <h3>Automated Follow-Up System</h3>
+      <p>80% of sales happen between the 5th and 12th follow-up. Most businesses stop after 1. Our AI follows up with every lead on the right cadence — via SMS, email, or both — until they respond.</p>
+      <div class="sol-stat">
+        <div class="ss"><div class="ss-num">80%</div><div class="ss-lbl">More replies</div></div>
+        <div class="ss"><div class="ss-num">Zero</div><div class="ss-lbl">Leads forgotten</div></div>
+        <div class="ss"><div class="ss-num">Auto</div><div class="ss-lbl">Timing & tone</div></div>
+      </div>
+      <ul class="sol-list">
+        <li>Automated SMS and email sequences for every lead</li>
+        <li>Personalized messages based on where they are in the funnel</li>
+        <li>Stops automatically when they reply or book</li>
+        <li>Re-engages cold leads that ghosted months ago</li>
+        <li>Integrates with any CRM or works standalone</li>
+      </ul>
+      <a href="book-a-call.html" class="sol-btn">Get This System →</a>
+    </div>
+    <div class="sol-visual" style="background:#fff5f0;">
+      <div class="visual-head">FOLLOW-UP SEQUENCE</div>
+      <div class="chat-bubble cb-in" style="background:#fff;">Day 1: "Hi [Name], just following up on your inquiry — any questions?"</div>
+      <div class="chat-bubble cb-in" style="background:#fff;">Day 3: "Still here when you're ready. Spots filling up fast this month."</div>
+      <div class="chat-bubble cb-in" style="background:#fff;">Day 7: "Last nudge — would love to help. Want to book a quick 10-min chat?"</div>
+      <div class="visual-metric">
+        <div class="vm-label">Avg response rate</div>
+        <div class="vm-val">34%</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AI Visibility -->
+  <div class="sol-card">
+    <div class="sol-visual" style="background:#f0f9ff;">
+      <div class="visual-head">AI SEARCH RESULTS</div>
+      <div class="chat-bubble cb-in">"What's the best dental practice in Miami for implants?"</div>
+      <div class="chat-bubble cb-out" style="background:#16a34a;">Based on patient reviews and expertise, I'd recommend Bright Smile Dental on Brickell — they specialize in implants and have excellent ratings...</div>
+      <div style="font-size:0.72rem;color:#999;margin-top:8px;padding:8px 14px;background:#fff;border-radius:10px;">
+        ↑ This is your business, not a competitor
+      </div>
+      <div class="visual-metric">
+        <div class="vm-label">AI platforms optimized</div>
+        <div class="vm-val">6 platforms</div>
+      </div>
+    </div>
+    <div class="sol-text">
+      <div class="sol-tag">🤖 AI VISIBILITY</div>
+      <h3>AI Search Optimization</h3>
+      <p>When people ask ChatGPT, Google Gemini, or Perplexity to recommend a business like yours — do they get your name? We make sure they do, across all 6 major AI platforms.</p>
+      <div class="sol-stat">
+        <div class="ss"><div class="ss-num">6</div><div class="ss-lbl">AI platforms</div></div>
+        <div class="ss"><div class="ss-num">+300M</div><div class="ss-lbl">Potential reach</div></div>
+        <div class="ss"><div class="ss-num">30d</div><div class="ss-lbl">To see results</div></div>
+      </div>
+      <ul class="sol-list">
+        <li>Full AI citation audit — see who's getting recommended now</li>
+        <li>Structured data and schema markup optimization</li>
+        <li>Content strategy for AI discoverability</li>
+        <li>Monthly AI visibility reporting dashboard</li>
+        <li>Ongoing optimization as AI platforms evolve</li>
+      </ul>
+      <a href="book-a-call.html" class="sol-btn">Get This System →</a>
+    </div>
+  </div>
+
+  <!-- Full Stack AI -->
+  <div class="sol-card">
+    <div class="sol-text">
+      <div class="sol-tag">⚡ FULL STACK</div>
+      <h3>Complete AI Business System</h3>
+      <p>Stack all four systems together for maximum impact. Calls answered, emails handled, leads followed up, and AI platforms covered — all running 24/7 while you focus on what you love.</p>
+      <div class="sol-stat">
+        <div class="ss"><div class="ss-num">20+</div><div class="ss-lbl">Hours saved/week</div></div>
+        <div class="ss"><div class="ss-num">All-in</div><div class="ss-lbl">Coverage</div></div>
+        <div class="ss"><div class="ss-num">7 days</div><div class="ss-lbl">Full setup</div></div>
+      </div>
+      <ul class="sol-list">
+        <li>AI Receptionist (24/7 call answering + booking)</li>
+        <li>AI Email Assistant (inbox ranking + draft replies)</li>
+        <li>Automated Follow-Up (SMS + email sequences)</li>
+        <li>AI Visibility (cited across all major AI platforms)</li>
+        <li>Monthly strategy calls + priority support</li>
+        <li>Guaranteed ROI or we work free until you get it</li>
+      </ul>
+      <a href="book-a-call.html" class="sol-btn">Get Everything →</a>
+    </div>
+    <div class="sol-visual" style="background:#0a0a0a;">
+      <div class="visual-head" style="color:#60a5fa;">YOUR BUSINESS AT A GLANCE</div>
+      <div class="visual-metric" style="background:#111827;border-color:#1f2937;">
+        <div class="vm-label" style="color:#9ca3af;">Calls answered today</div>
+        <div class="vm-val" style="color:#34d399;">12 / 12</div>
+      </div>
+      <div class="visual-metric" style="background:#111827;border-color:#1f2937;">
+        <div class="vm-label" style="color:#9ca3af;">Hot leads in inbox</div>
+        <div class="vm-val" style="color:#f87171;">3 🔥</div>
+      </div>
+      <div class="visual-metric" style="background:#111827;border-color:#1f2937;">
+        <div class="vm-label" style="color:#9ca3af;">Follow-ups sent</div>
+        <div class="vm-val" style="color:#60a5fa;">24 auto</div>
+      </div>
+      <div class="visual-metric" style="background:#111827;border-color:#1f2937;">
+        <div class="vm-label" style="color:#9ca3af;">AI platform rank</div>
+        <div class="vm-val" style="color:#a78bfa;">#1 local</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="dark-cta">
+  <h2>Ready to Get Started?</h2>
+  <p>Book a free 15-min call. We'll show you exactly which system fits your business and what it costs.</p>
+  <div class="dc-btns">
+    <a href="book-a-call.html" class="btn-w">🚀 Book a Free Call</a>
+    <a href="free-tools.html" class="btn-g">Try Free Tools First</a>
+  </div>
+</div>
+
+<footer>
+  <div class="ft-row">
+    <div class="ft-logo">
+      <div class="ft-logo-icon">VM</div>
+      V&amp;M <span>AI Agency</span>
+    </div>
+    <div class="ft-links">
+      <a href="solutions.html">Solutions</a>
+      <a href="free-tools.html">Free Tools</a>
+      <a href="blog.html">Blog</a>
+      <a href="book-a-call.html">Book a Call</a>
+    </div>
+  </div>
+  <div class="ft-bot">© 2025 V&M AI Agency. All rights reserved.</div>
+</footer>
+</body>
+</html>

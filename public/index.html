@@ -3,161 +3,198 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ClearPath AI — AI Automation for Small Business</title>
+  <title>V&M AI Agency — AI Automation for Small Business</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Helvetica Neue', Arial, sans-serif; background: #fff; color: #0a0a0a; }
-
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:'Helvetica Neue',Arial,sans-serif;background:#fff;color:#0a0a0a;}
     /* NAV */
-    nav { display: flex; justify-content: space-between; align-items: center; padding: 18px 40px; background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
-    .nav-logo { font-weight: 900; font-size: 1.1rem; display: flex; align-items: center; gap: 8px; }
-    .nav-logo span { color: #2563eb; }
-    .nav-links { display: flex; gap: 32px; font-size: 0.9rem; color: #555; }
-    .nav-links a { text-decoration: none; color: #555; }
-    .nav-links a:hover { color: #000; }
-    .nav-cta { background: #1a3a2a; color: #fff; padding: 10px 22px; border-radius: 999px; font-size: 0.9rem; font-weight: 600; text-decoration: none; }
-
+    nav{display:flex;justify-content:space-between;align-items:center;padding:16px 40px;background:#fff;border-bottom:1px solid #eee;position:sticky;top:0;z-index:100;}
+    .nav-logo{font-weight:900;font-size:1rem;display:flex;align-items:center;gap:10px;text-decoration:none;color:#0a0a0a;}
+    .nav-logo-icon{width:32px;height:32px;background:#0a0a0a;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:0.7rem;font-weight:900;letter-spacing:0;}
+    .nav-logo-text span{color:#2563eb;}
+    .nav-links{display:flex;gap:28px;font-size:0.875rem;}
+    .nav-links a{text-decoration:none;color:#555;}
+    .nav-links a:hover{color:#0a0a0a;}
+    .nav-cta{background:#1a3a2a;color:#fff;padding:10px 22px;border-radius:999px;font-size:0.875rem;font-weight:600;text-decoration:none;white-space:nowrap;}
     /* HERO */
-    .hero { position: relative; min-height: 85vh; display: flex; align-items: center; padding: 80px 40px; overflow: hidden; background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=80') center/cover no-repeat; }
-    .hero-content { max-width: 500px; color: #fff; z-index: 1; }
-    .hero-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; color: #60a5fa; margin-bottom: 20px; }
-    .hero h1 { font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 900; line-height: 1.15; margin-bottom: 20px; }
-    .hero h1 span { color: #60a5fa; }
-    .hero p { font-size: 1rem; opacity: 0.8; line-height: 1.7; margin-bottom: 32px; max-width: 420px; }
-    .hero p strong { color: #fff; }
-    .hero-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 36px; }
-    .hero-badge { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 6px 14px; border-radius: 999px; font-size: 0.8rem; }
-    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
-    .btn-primary { background: #2563eb; color: #fff; padding: 14px 28px; border-radius: 999px; font-weight: 700; font-size: 0.95rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
-    .btn-secondary { background: transparent; color: #fff; padding: 14px 28px; border-radius: 999px; font-weight: 600; font-size: 0.95rem; text-decoration: none; border: 1px solid rgba(255,255,255,0.4); }
-    .hero-cards { position: absolute; right: 60px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 14px; width: 320px; z-index: 1; }
-    .hero-card { background: rgba(255,255,255,0.1); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.2); border-radius: 16px; padding: 18px 20px; color: #fff; display: flex; gap: 14px; align-items: flex-start; }
-    .hero-card-icon { width: 40px; height: 40px; background: rgba(255,255,255,0.15); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
-    .hero-card h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 4px; }
-    .hero-card p { font-size: 0.8rem; opacity: 0.7; line-height: 1.5; }
-
-    /* LOGOS */
-    .logos { background: #f8f8f8; padding: 32px 40px; text-align: center; border-bottom: 1px solid #eee; }
-    .logos-label { font-size: 0.7rem; letter-spacing: 2px; color: #2563eb; font-weight: 700; margin-bottom: 20px; }
-    .logos-row { display: flex; justify-content: center; align-items: center; gap: 48px; flex-wrap: wrap; opacity: 0.4; font-weight: 800; font-size: 1rem; letter-spacing: 1px; }
-
-    /* SECTIONS */
-    .section { padding: 96px 40px; max-width: 1100px; margin: 0 auto; }
-    .section-label { font-size: 0.7rem; letter-spacing: 2px; color: #2563eb; font-weight: 700; margin-bottom: 16px; }
-    .section-title { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 900; line-height: 1.2; margin-bottom: 16px; }
-    .section-sub { color: #666; font-size: 1rem; line-height: 1.7; max-width: 600px; }
-
-    /* STATS */
-    .stats-bg { background: #f5f4ef; }
-    .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px; }
-    .stat-card { background: #fff; border-radius: 16px; padding: 28px; border: 1px solid #e8e8e8; }
-    .stat-label { font-size: 0.7rem; letter-spacing: 1px; color: #888; font-weight: 600; margin-bottom: 8px; }
-    .stat-num { font-size: 2rem; font-weight: 900; color: #0a0a0a; margin-bottom: 6px; }
-    .stat-desc { font-size: 0.85rem; color: #666; }
-
+    .hero{position:relative;min-height:88vh;display:flex;align-items:center;padding:80px 40px;overflow:hidden;background:linear-gradient(rgba(0,0,0,0.62),rgba(0,0,0,0.62)),url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=80') center/cover no-repeat;}
+    .hero-inner{display:flex;align-items:center;justify-content:space-between;max-width:1200px;margin:0 auto;width:100%;gap:40px;}
+    .hero-content{max-width:520px;color:#fff;}
+    .hero-label{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);padding:6px 16px;border-radius:999px;font-size:0.75rem;font-weight:700;letter-spacing:2px;color:#93c5fd;margin-bottom:24px;}
+    .hero h1{font-size:clamp(2.2rem,4vw,3.4rem);font-weight:900;line-height:1.12;margin-bottom:20px;}
+    .hero h1 span{color:#60a5fa;}
+    .hero-p{font-size:1rem;opacity:0.8;line-height:1.7;margin-bottom:32px;max-width:440px;}
+    .hero-p strong{color:#fff;opacity:1;}
+    .hero-badges{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:36px;}
+    .hero-badge{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.18);color:#fff;padding:6px 14px;border-radius:999px;font-size:0.78rem;}
+    .hero-btns{display:flex;gap:12px;flex-wrap:wrap;}
+    .btn-blue{background:#2563eb;color:#fff;padding:14px 28px;border-radius:999px;font-weight:700;font-size:0.95rem;text-decoration:none;display:inline-flex;align-items:center;gap:8px;}
+    .btn-ghost{background:transparent;color:#fff;padding:14px 28px;border-radius:999px;font-weight:600;font-size:0.95rem;text-decoration:none;border:1px solid rgba(255,255,255,0.35);}
+    .hero-cards{display:flex;flex-direction:column;gap:14px;width:310px;flex-shrink:0;}
+    .hero-card{background:rgba(255,255,255,0.08);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.18);border-radius:16px;padding:18px 20px;color:#fff;display:flex;gap:14px;align-items:flex-start;}
+    .hero-card-icon{width:40px;height:40px;background:rgba(255,255,255,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;}
+    .hero-card h4{font-size:0.875rem;font-weight:700;margin-bottom:3px;}
+    .hero-card p{font-size:0.78rem;opacity:0.65;line-height:1.5;}
+    /* AI LOGOS */
+    .ai-bar{background:#0a0a0a;padding:20px 40px;text-align:center;}
+    .ai-bar-label{font-size:0.65rem;letter-spacing:2px;color:#555;font-weight:700;margin-bottom:16px;}
+    .ai-bar-logos{display:flex;justify-content:center;align-items:center;gap:36px;flex-wrap:wrap;}
+    .ai-logo{display:flex;align-items:center;gap:7px;font-size:0.82rem;font-weight:700;color:#888;}
+    .ai-logo .users{color:#555;font-weight:400;font-size:0.75rem;}
+    /* SECTION */
+    .section{padding:96px 40px;max-width:1100px;margin:0 auto;}
+    .sec-label{font-size:0.68rem;letter-spacing:2px;color:#2563eb;font-weight:700;margin-bottom:14px;}
+    .sec-title{font-size:clamp(1.8rem,3vw,2.6rem);font-weight:900;line-height:1.18;margin-bottom:14px;}
+    .sec-sub{color:#666;font-size:0.95rem;line-height:1.7;max-width:580px;}
+    /* SCANNER */
+    .scanner-bg{background:#f5f4ef;}
+    .scanner-wrap{text-align:center;padding:96px 40px;}
+    .scanner-title{font-size:clamp(2rem,4vw,3.2rem);font-weight:900;line-height:1.15;max-width:720px;margin:0 auto 14px;}
+    .scanner-title span{color:#2563eb;}
+    .scanner-sub{color:#666;margin-bottom:40px;font-size:0.95rem;}
+    .scanner-box{background:#fff;border-radius:16px;padding:8px 8px 8px 20px;display:flex;align-items:center;max-width:680px;margin:0 auto 12px;box-shadow:0 4px 24px rgba(0,0,0,0.07);border:1px solid #e8e8e8;}
+    .scanner-box input{flex:1;border:none;outline:none;font-size:1rem;color:#333;background:transparent;padding:8px 0;}
+    .scanner-box input::placeholder{color:#bbb;}
+    .scanner-btn{background:#2563eb;color:#fff;border:none;padding:13px 24px;border-radius:10px;font-weight:700;font-size:0.875rem;cursor:pointer;white-space:nowrap;}
+    .scanner-hint{font-size:0.78rem;color:#aaa;margin-bottom:6px;}
+    .scanner-count strong{color:#0a0a0a;}
+    .scanner-count{font-size:0.82rem;color:#777;}
+    /* PROBLEM */
+    .problem-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:48px;}
+    .prob-card{border:1px solid #e8e8e8;border-radius:18px;padding:28px;background:#fff;}
+    .prob-stat{font-size:2.4rem;font-weight:900;margin-bottom:6px;}
+    .prob-stat.red{color:#ef4444;}.prob-stat.blue{color:#2563eb;}.prob-stat.green{color:#16a34a;}
+    .prob-card h3{font-size:1rem;font-weight:700;margin-bottom:6px;}
+    .prob-card>p{font-size:0.85rem;color:#666;line-height:1.6;margin-bottom:14px;}
+    .prob-sol{background:#eff6ff;border-radius:10px;padding:10px 14px;font-size:0.78rem;color:#1e40af;display:flex;gap:7px;}
+    .prob-src{font-size:0.72rem;color:#ccc;margin-top:10px;font-style:italic;}
     /* COMPARE */
-    .compare-wrap { display: grid; grid-template-columns: 1fr 1fr; border-radius: 20px; overflow: hidden; margin-top: 48px; border: 1px solid #e8e8e8; }
-    .compare-col { padding: 40px; }
-    .compare-col.bad { background: #fff5f5; }
-    .compare-col.good { background: #f0fdf4; }
-    .compare-head { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1rem; margin-bottom: 32px; }
-    .compare-head .dot-bad { width: 24px; height: 24px; border-radius: 50%; border: 2px solid #ef4444; display: flex; align-items: center; justify-content: center; color: #ef4444; font-size: 0.8rem; }
-    .compare-head .dot-good { width: 24px; height: 24px; border-radius: 50%; border: 2px solid #16a34a; display: flex; align-items: center; justify-content: center; color: #16a34a; font-size: 0.8rem; }
-    .compare-item { margin-bottom: 24px; }
-    .compare-item-label { font-size: 0.7rem; letter-spacing: 1px; color: #888; font-weight: 600; margin-bottom: 4px; }
-    .compare-item-val { font-size: 1.6rem; font-weight: 900; }
-    .compare-col.bad .compare-item-val { color: #dc2626; }
-    .compare-col.good .compare-item-val { color: #15803d; }
-
-    /* FEATURES */
-    .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 48px; }
-    .feature-card { background: #f8f8f8; border-radius: 16px; padding: 28px; border: 1px solid #eee; }
-    .feature-icon { width: 44px; height: 44px; background: #e8e8e8; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin-bottom: 16px; }
-    .feature-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
-    .feature-card p { font-size: 0.875rem; color: #666; line-height: 1.6; }
-
+    .compare-wrap{display:grid;grid-template-columns:1fr 1fr;border-radius:20px;overflow:hidden;margin-top:48px;border:1px solid #e8e8e8;}
+    .cmp{padding:40px;}
+    .cmp.bad{background:#fff5f5;}.cmp.good{background:#f0fdf4;}
+    .cmp-head{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1rem;margin-bottom:28px;}
+    .dot-bad{width:24px;height:24px;border-radius:50%;border:2px solid #ef4444;display:flex;align-items:center;justify-content:center;color:#ef4444;font-size:0.75rem;}
+    .dot-good{width:24px;height:24px;border-radius:50%;border:2px solid #16a34a;display:flex;align-items:center;justify-content:center;color:#16a34a;font-size:0.75rem;}
+    .cmp-item{margin-bottom:22px;}
+    .cmp-lbl{font-size:0.68rem;letter-spacing:1px;color:#999;font-weight:600;margin-bottom:3px;}
+    .cmp-val{font-size:1.6rem;font-weight:900;}
+    .cmp.bad .cmp-val{color:#dc2626;}.cmp.good .cmp-val{color:#15803d;}
     /* INDUSTRIES */
-    .industries-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 48px; }
-    .industry-card { border: 1px solid #e8e8e8; border-radius: 16px; padding: 24px; background: #fff; }
-    .industry-icon { width: 44px; height: 44px; background: #f0f0f0; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin-bottom: 16px; }
-    .industry-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 8px; }
-    .industry-card p { font-size: 0.8rem; color: #666; line-height: 1.5; margin-bottom: 16px; }
-    .industry-card a { font-size: 0.85rem; color: #2563eb; font-weight: 600; text-decoration: none; }
-
-    /* HOW IT WORKS */
-    .how-bg { background: #f5f4ef; }
-    .how-steps { display: flex; flex-direction: column; gap: 0; margin-top: 64px; position: relative; max-width: 600px; margin-left: auto; margin-right: auto; }
-    .how-step { display: grid; grid-template-columns: 1fr 80px 1fr; align-items: center; gap: 0; margin-bottom: 48px; }
-    .how-step-left { text-align: right; padding-right: 32px; }
-    .how-step-right { padding-left: 32px; }
-    .how-step-center { display: flex; justify-content: center; }
-    .how-num { font-size: 5rem; font-weight: 900; color: #e8e8e8; line-height: 1; }
-    .how-icon-box { width: 64px; height: 64px; background: #0a0a0a; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: #fff; }
-    .how-step h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 6px; }
-    .how-step p { font-size: 0.875rem; color: #666; line-height: 1.6; }
-
+    .ind-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:48px;}
+    .ind-card{border:1px solid #e8e8e8;border-radius:16px;padding:24px;background:#fff;}
+    .ind-icon{width:44px;height:44px;background:#f0f0f0;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:14px;}
+    .ind-card h3{font-size:0.95rem;font-weight:700;margin-bottom:7px;}
+    .ind-card p{font-size:0.8rem;color:#666;line-height:1.5;margin-bottom:14px;}
+    .ind-card a{font-size:0.82rem;color:#2563eb;font-weight:600;text-decoration:none;}
+    /* WHY US */
+    .why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:48px;}
+    .why-card{background:#f8f8f8;border-radius:16px;padding:28px;border:1px solid #eee;}
+    .why-icon{width:44px;height:44px;background:#e8e8e8;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:14px;}
+    .why-card h3{font-size:1rem;font-weight:700;margin-bottom:7px;}
+    .why-card p{font-size:0.85rem;color:#666;line-height:1.6;}
+    /* DARK HOW */
+    .dark-how{background:#0a0a0a;color:#fff;padding:96px 40px;text-align:center;}
+    .dark-how .sec-label{color:#60a5fa;}
+    .dark-how .sec-title{color:#fff;margin:0 auto 14px;max-width:600px;}
+    .dark-steps{display:flex;justify-content:center;gap:64px;flex-wrap:wrap;margin-top:64px;}
+    .dark-step{max-width:220px;text-align:center;}
+    .dark-icon{width:70px;height:70px;background:#111827;border:1px solid #1f2937;border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin:0 auto 18px;}
+    .dark-step-lbl{font-size:0.68rem;letter-spacing:2px;color:#60a5fa;font-weight:700;margin-bottom:10px;}
+    .dark-step h3{font-size:1.05rem;font-weight:800;color:#fff;margin-bottom:8px;}
+    .dark-step p{font-size:0.83rem;color:#6b7280;line-height:1.6;}
+    .dark-btn-wrap{margin-top:52px;}
+    .btn-dark-cta{background:#2563eb;color:#fff;padding:16px 36px;border-radius:999px;font-weight:700;font-size:0.95rem;text-decoration:none;display:inline-flex;align-items:center;gap:8px;}
+    /* SERVICE LADDER */
+    .ladder-bg{background:#f8f9ff;}
+    .ladder-header{text-align:center;max-width:700px;margin:0 auto 48px;}
+    .ladder-badge{display:inline-block;background:#eff6ff;border:1px solid #bfdbfe;color:#1d4ed8;font-size:0.72rem;font-weight:700;letter-spacing:2px;padding:6px 16px;border-radius:999px;margin-bottom:18px;}
+    .ladder-items{display:flex;flex-direction:column;gap:0;max-width:860px;margin:0 auto;}
+    .ladder-item{border:1px solid #e8e8e8;border-radius:16px;padding:20px 24px;background:#fff;display:flex;align-items:center;gap:18px;cursor:pointer;margin-bottom:10px;transition:all 0.2s;}
+    .ladder-item:hover{border-color:#2563eb;box-shadow:0 4px 16px rgba(37,99,235,0.08);}
+    .ladder-item.active{background:#eff6ff;border-color:#2563eb;}
+    .ladder-icon{width:44px;height:44px;background:#f0f0f0;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;}
+    .ladder-item.active .ladder-icon{background:#dbeafe;}
+    .ladder-name{font-weight:700;font-size:0.95rem;flex:1;}
+    .ladder-tag{font-size:0.7rem;font-weight:700;letter-spacing:1px;color:#2563eb;background:#dbeafe;padding:3px 10px;border-radius:999px;}
+    .ladder-detail{max-width:860px;margin:-6px auto 10px;background:#eff6ff;border:1px solid #bfdbfe;border-radius:0 0 16px 16px;padding:24px 28px;display:none;}
+    .ladder-detail.show{display:block;}
+    .ladder-detail h4{font-size:1rem;font-weight:800;margin-bottom:6px;}
+    .ladder-detail p{font-size:0.85rem;color:#555;line-height:1.6;margin-bottom:16px;}
+    .ladder-includes{font-size:0.7rem;letter-spacing:1px;color:#2563eb;font-weight:700;margin-bottom:10px;}
+    .ladder-list{list-style:none;display:flex;flex-direction:column;gap:6px;}
+    .ladder-list li{font-size:0.85rem;color:#374151;display:flex;align-items:center;gap:8px;}
+    .ladder-list li::before{content:"✓";color:#16a34a;font-weight:700;}
+    /* RETAINER PRICING */
+    .ret-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px;}
+    .ret-card{border:1px solid #e8e8e8;border-radius:20px;padding:32px;background:#fff;}
+    .ret-name{font-size:1.1rem;font-weight:800;margin-bottom:4px;}
+    .ret-type{font-size:0.68rem;letter-spacing:2px;color:#2563eb;font-weight:700;margin-bottom:20px;}
+    .ret-price{font-size:2.6rem;font-weight:900;color:#2563eb;margin-bottom:2px;}
+    .ret-per{font-size:0.82rem;color:#999;margin-bottom:24px;}
+    .ret-list{list-style:none;margin-bottom:0;}
+    .ret-list li{font-size:0.85rem;padding:8px 0;border-bottom:1px solid #f0f0f0;color:#444;display:flex;gap:8px;align-items:flex-start;}
+    .ret-list li::before{content:"✓";color:#16a34a;font-weight:700;flex-shrink:0;}
+    /* INCLUDES */
+    .includes-box{border:1px solid #e8e8e8;border-radius:16px;padding:32px;max-width:800px;margin:32px auto 0;}
+    .includes-list{list-style:none;display:flex;flex-direction:column;gap:14px;}
+    .includes-list li{display:flex;align-items:center;gap:10px;font-size:0.9rem;color:#374151;}
+    .includes-list li::before{content:"✓";color:#16a34a;font-weight:700;font-size:1rem;}
     /* PRICING */
-    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px; }
-    .price-card { border: 1px solid #e8e8e8; border-radius: 20px; padding: 32px; background: #fff; }
-    .price-card.featured { background: #0a0a0a; color: #fff; border-color: #0a0a0a; }
-    .price-tier { font-size: 0.7rem; letter-spacing: 2px; font-weight: 700; color: #2563eb; margin-bottom: 8px; }
-    .price-card.featured .price-tier { color: #60a5fa; }
-    .price-card h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 20px; }
-    .price-amount { font-size: 2.8rem; font-weight: 900; margin-bottom: 4px; }
-    .price-per { font-size: 0.85rem; color: #888; margin-bottom: 24px; }
-    .price-card.featured .price-per { color: #aaa; }
-    .price-list { list-style: none; margin-bottom: 32px; }
-    .price-list li { font-size: 0.875rem; padding: 8px 0; border-bottom: 1px solid #f0f0f0; color: #444; display: flex; gap: 8px; }
-    .price-card.featured .price-list li { border-bottom-color: #333; color: #ccc; }
-    .price-list li::before { content: "✓"; color: #2563eb; font-weight: 700; flex-shrink: 0; }
-    .price-card.featured .price-list li::before { color: #60a5fa; }
-    .btn-price { display: block; text-align: center; padding: 14px; border-radius: 999px; font-weight: 700; font-size: 0.9rem; text-decoration: none; }
-    .btn-price-dark { background: #0a0a0a; color: #fff; }
-    .btn-price-white { background: #fff; color: #0a0a0a; }
-    .btn-price-outline { border: 2px solid #e8e8e8; color: #0a0a0a; }
-
+    .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px;}
+    .price-card{border:1px solid #e8e8e8;border-radius:20px;padding:32px;background:#fff;}
+    .price-card.featured{background:#0a0a0a;color:#fff;border-color:#0a0a0a;}
+    .price-tier{font-size:0.68rem;letter-spacing:2px;font-weight:700;color:#2563eb;margin-bottom:8px;}
+    .price-card.featured .price-tier{color:#60a5fa;}
+    .price-card h3{font-size:1.15rem;font-weight:800;margin-bottom:18px;}
+    .price-amount{font-size:2.8rem;font-weight:900;margin-bottom:3px;}
+    .price-per{font-size:0.82rem;color:#888;margin-bottom:24px;}
+    .price-card.featured .price-per{color:#aaa;}
+    .price-list{list-style:none;margin-bottom:32px;}
+    .price-list li{font-size:0.85rem;padding:8px 0;border-bottom:1px solid #f0f0f0;color:#444;display:flex;gap:8px;}
+    .price-card.featured .price-list li{border-bottom-color:#222;color:#ccc;}
+    .price-list li::before{content:"✓";color:#2563eb;font-weight:700;}
+    .price-card.featured .price-list li::before{color:#60a5fa;}
+    .btn-price{display:block;text-align:center;padding:14px;border-radius:999px;font-weight:700;font-size:0.9rem;text-decoration:none;}
+    .btn-dark{background:#0a0a0a;color:#fff;}
+    .btn-white{background:#fff;color:#0a0a0a;}
+    .btn-outline{border:2px solid #e8e8e8;color:#0a0a0a;}
     /* FAQ */
-    .faq-list { margin-top: 48px; display: flex; flex-direction: column; gap: 12px; max-width: 800px; margin-left: auto; margin-right: auto; }
-    .faq-item { border: 1px solid #e8e8e8; border-radius: 14px; overflow: hidden; background: #fff; }
-    .faq-q { padding: 20px 24px; font-weight: 600; font-size: 0.95rem; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
-    .faq-q:hover { background: #f8f8f8; }
-    .faq-a { padding: 0 24px 20px; font-size: 0.875rem; color: #666; line-height: 1.7; display: none; }
-    .faq-item.open .faq-a { display: block; }
-    .faq-plus { font-size: 1.2rem; color: #aaa; }
-
+    .faq-list{margin-top:48px;display:flex;flex-direction:column;gap:10px;max-width:800px;margin-left:auto;margin-right:auto;}
+    .faq-item{border:1px solid #e8e8e8;border-radius:14px;overflow:hidden;background:#fff;}
+    .faq-q{padding:20px 24px;font-weight:600;font-size:0.92rem;display:flex;justify-content:space-between;align-items:center;cursor:pointer;}
+    .faq-q:hover{background:#f8f8f8;}
+    .faq-a{padding:0 24px 20px;font-size:0.85rem;color:#666;line-height:1.7;display:none;}
+    .faq-item.open .faq-a{display:block;}
+    .faq-arr{color:#bbb;transition:transform 0.2s;}
+    .faq-item.open .faq-arr{transform:rotate(90deg);}
     /* CTA */
-    .cta-section { background: #0a0a0a; color: #fff; padding: 96px 40px; text-align: center; border-radius: 24px; margin: 0 40px 80px; }
-    .cta-section h2 { font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 900; line-height: 1.2; max-width: 700px; margin: 0 auto 16px; }
-    .cta-section p { opacity: 0.6; margin-bottom: 40px; font-size: 0.95rem; }
-    .cta-badges { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; margin-bottom: 40px; font-size: 0.8rem; opacity: 0.6; letter-spacing: 1px; }
-    .cta-btns { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
-    .btn-cta-white { background: #fff; color: #0a0a0a; padding: 16px 32px; border-radius: 999px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
-    .btn-cta-ghost { border: 1px solid rgba(255,255,255,0.3); color: #fff; padding: 16px 32px; border-radius: 999px; font-weight: 600; text-decoration: none; }
-
+    .cta-dark{background:#0a0a0a;color:#fff;padding:96px 40px;text-align:center;border-radius:24px;margin:0 40px 80px;}
+    .cta-dark h2{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:900;line-height:1.2;max-width:720px;margin:0 auto 14px;}
+    .cta-dark p{opacity:0.55;margin-bottom:36px;font-size:0.95rem;}
+    .cta-badges{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin-bottom:36px;font-size:0.75rem;opacity:0.55;letter-spacing:1px;}
+    .cta-btns{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;}
+    .btn-cta-w{background:#fff;color:#0a0a0a;padding:15px 32px;border-radius:999px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:8px;}
+    .btn-cta-g{border:1px solid rgba(255,255,255,0.3);color:#fff;padding:15px 32px;border-radius:999px;font-weight:600;text-decoration:none;}
     /* FOOTER */
-    footer { background: #0a0a0a; color: #fff; padding: 64px 40px 32px; }
-    .footer-top { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
-    .footer-brand p { font-size: 0.85rem; opacity: 0.5; margin-top: 12px; line-height: 1.6; max-width: 200px; }
-    .footer-col h4 { font-size: 0.75rem; letter-spacing: 2px; color: #666; font-weight: 700; margin-bottom: 16px; }
-    .footer-col a { display: block; font-size: 0.875rem; color: #aaa; text-decoration: none; margin-bottom: 10px; }
-    .footer-col a:hover { color: #fff; }
-    .footer-bottom { border-top: 1px solid #222; padding-top: 24px; font-size: 0.8rem; opacity: 0.4; text-align: center; }
-
-    @media (max-width: 900px) {
-      .hero-cards { display: none; }
-      .stats-grid { grid-template-columns: 1fr; }
-      .compare-wrap { grid-template-columns: 1fr; }
-      .features-grid { grid-template-columns: 1fr; }
-      .industries-grid { grid-template-columns: repeat(2, 1fr); }
-      .pricing-grid { grid-template-columns: 1fr; }
-      .footer-top { grid-template-columns: 1fr 1fr; }
-      .how-step { grid-template-columns: 1fr; }
-      .how-step-left { text-align: left; padding-right: 0; }
-      .how-num { display: none; }
-      nav { padding: 16px 20px; }
-      .nav-links { display: none; }
-      .section { padding: 64px 20px; }
-      .hero { padding: 80px 20px; }
+    footer{background:#0a0a0a;color:#fff;padding:64px 40px 28px;}
+    .ft{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px;}
+    .ft-brand p{font-size:0.82rem;opacity:0.45;margin-top:10px;line-height:1.6;max-width:200px;}
+    .ft-logo{font-weight:900;font-size:1rem;display:flex;align-items:center;gap:8px;}
+    .ft-logo-icon{width:28px;height:28px;background:#fff;border-radius:6px;display:flex;align-items:center;justify-content:center;color:#0a0a0a;font-size:0.6rem;font-weight:900;}
+    .ft-logo span{color:#2563eb;}
+    .ft-col h4{font-size:0.68rem;letter-spacing:2px;color:#555;font-weight:700;margin-bottom:14px;}
+    .ft-col a{display:block;font-size:0.85rem;color:#888;text-decoration:none;margin-bottom:8px;}
+    .ft-col a:hover{color:#fff;}
+    .ft-bottom{border-top:1px solid #1a1a1a;padding-top:20px;font-size:0.78rem;opacity:0.35;text-align:center;}
+    @media(max-width:900px){
+      .hero-cards{display:none;}
+      .problem-grid,.compare-wrap,.why-grid,.pricing-grid,.ret-grid,.ind-grid{grid-template-columns:1fr;}
+      .dark-steps{gap:40px;}
+      nav{padding:14px 20px;}.nav-links{display:none;}
+      .section{padding:64px 20px;}.hero{padding:80px 20px;}
+      .cta-dark{margin:0 16px 60px;border-radius:16px;}
+      .ft{grid-template-columns:1fr 1fr;}
+      .scanner-wrap{padding:64px 20px;}
     }
   </style>
 </head>
@@ -165,349 +202,391 @@
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">ClearPath <span>AI</span></div>
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-icon">VM</div>
+    <div class="nav-logo-text">V&amp;M <span>AI Agency</span></div>
+  </a>
   <div class="nav-links">
-    <a href="#">Services</a>
-    <a href="#">Industries</a>
+    <a href="solutions.html">Solutions</a>
+    <a href="free-tools.html">Free Tools</a>
     <a href="enterprise.html">Enterprise</a>
-    <a href="#">About</a>
+    <a href="blog.html">Blog</a>
+    <a href="book-a-call.html">Book a Call</a>
   </div>
-  <a href="https://clearpath-ai.myshopify.com" class="nav-cta">Book a Call →</a>
+  <a href="book-a-call.html" class="nav-cta">Book a 15-min Call →</a>
 </nav>
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-content">
-    <div class="hero-label">AI FOR SMALL BUSINESS</div>
-    <h1>Never Miss a Lead.<br><span>Never Lose a Client.</span></h1>
-    <p>We build AI systems that answer your phones, scan your inbox, and follow up with clients — automatically. <strong>Guaranteed 10+ hours/week saved or you don't pay.</strong></p>
-    <div class="hero-badges">
-      <div class="hero-badge">Results in days, not months</div>
-      <div class="hero-badge">No new software to learn</div>
-      <div class="hero-badge">Cancel anytime</div>
-    </div>
-    <div class="hero-btns">
-      <a href="https://clearpath-ai.myshopify.com" class="btn-primary">🚀 Get Started</a>
-      <a href="enterprise.html" class="btn-secondary">Book a Call</a>
-    </div>
-  </div>
-  <div class="hero-cards">
-    <div class="hero-card">
-      <div class="hero-card-icon">📞</div>
-      <div>
-        <h4>24/7 AI Receptionist</h4>
-        <p>Answers every call, books appointments while you sleep</p>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-label">✦ AI FOR SMALL BUSINESS</div>
+      <h1>Get 15+ Hours Back Every Week<br><span>With Custom AI</span></h1>
+      <p class="hero-p">We build AI systems that answer your phones, scan your inbox, and follow up with clients — automatically. <strong>Guaranteed 10+ hours/week saved or you don't pay.</strong></p>
+      <div class="hero-badges">
+        <div class="hero-badge">Results in days, not months</div>
+        <div class="hero-badge">No new software to learn</div>
+        <div class="hero-badge">Risk-free guarantee</div>
+      </div>
+      <div class="hero-btns">
+        <a href="book-a-call.html" class="btn-blue">🚀 Book a Free Call</a>
+        <a href="solutions.html" class="btn-ghost">View Solutions</a>
       </div>
     </div>
-    <div class="hero-card">
-      <div class="hero-card-icon">✉️</div>
-      <div>
-        <h4>AI Email Assistant</h4>
-        <p>Scans your inbox and tells you exactly who to call back first</p>
-      </div>
-    </div>
-    <div class="hero-card">
-      <div class="hero-card-icon">📅</div>
-      <div>
-        <h4>Auto Follow-Up</h4>
-        <p>Consistent reminders so no lead ever goes cold</p>
-      </div>
-    </div>
-    <div class="hero-card">
-      <div class="hero-card-icon">📈</div>
-      <div>
-        <h4>Client Recovery</h4>
-        <p>Re-engage lapsed clients and recover lost revenue automatically</p>
-      </div>
+    <div class="hero-cards">
+      <div class="hero-card"><div class="hero-card-icon">📞</div><div><h4>24/7 AI Receptionist</h4><p>Answers every call, books appointments while you sleep</p></div></div>
+      <div class="hero-card"><div class="hero-card-icon">✉️</div><div><h4>AI Email Assistant</h4><p>Scans inbox and tells you exactly who to call back first</p></div></div>
+      <div class="hero-card"><div class="hero-card-icon">📅</div><div><h4>Auto Follow-Up</h4><p>Consistent reminders so no lead ever goes cold</p></div></div>
+      <div class="hero-card"><div class="hero-card-icon">📈</div><div><h4>Client Recovery</h4><p>Re-engage lapsed clients and recover lost revenue</p></div></div>
     </div>
   </div>
 </div>
 
-<!-- LOGOS -->
-<div class="logos">
-  <div class="logos-label">TRUSTED BY BUSINESSES IN MIAMI</div>
-  <div class="logos-row">
-    <span>DENTAL</span>
-    <span>REAL ESTATE</span>
-    <span>MED SPA</span>
-    <span>LAW FIRMS</span>
-    <span>HOME SERVICES</span>
+<!-- AI BAR -->
+<div class="ai-bar">
+  <div class="ai-bar-label">GET DISCOVERED ON EVERY AI PLATFORM</div>
+  <div class="ai-bar-logos">
+    <div class="ai-logo">🤖 ChatGPT <span class="users">300M+ users</span></div>
+    <div class="ai-logo">🔍 Perplexity <span class="users">15M+ users</span></div>
+    <div class="ai-logo">✨ Google Gemini <span class="users">200M+ users</span></div>
+    <div class="ai-logo">⚡ Grok <span class="users">50M+ users</span></div>
+    <div class="ai-logo">🌀 Claude <span class="users">30M+ users</span></div>
+    <div class="ai-logo">🦙 Meta AI <span class="users">400M+ users</span></div>
   </div>
 </div>
 
-<!-- STATS -->
-<div class="stats-bg">
+<!-- SCANNER -->
+<div class="scanner-bg">
+  <div class="scanner-wrap">
+    <div class="sec-label" style="text-align:center;">AI VISIBILITY CHECK</div>
+    <div class="scanner-title">Is AI recommending <span>your business?</span><br>Or your competitors?</div>
+    <div class="scanner-sub">Find out in 60 seconds — free, no credit card required.</div>
+    <div class="scanner-box">
+      <span style="margin-right:10px;font-size:1.1rem;">🌐</span>
+      <input type="text" placeholder="Enter your website URL..." id="scanInput">
+      <button class="scanner-btn" onclick="doScan()">🔍 Scan Now</button>
+    </div>
+    <div class="scanner-hint">Free instant scan — no credit card, no call required</div>
+    <div class="scanner-count"><strong>2,847</strong> businesses scanned this month</div>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<div style="background:#f5f5f5;">
   <div class="section">
-    <div class="section-label">ALWAYS CURRENT</div>
-    <div class="section-title">AI tools are getting better every month.<br>We make sure YOUR systems keep up.</div>
-    <div class="stats-grid">
-      <div class="stat-card">
-        <div class="stat-label">LEAD RESPONSE TIME</div>
-        <div class="stat-num">&lt; 60 sec</div>
-        <div class="stat-desc">Automated call answering keeps leads warm before they call your competitor</div>
+    <div class="sec-label">THE PROBLEM</div>
+    <div class="sec-title">Your business is built for Google.<br><span style="color:#2563eb;">AI needs something different.</span></div>
+    <div class="problem-grid">
+      <div class="prob-card">
+        <div class="prob-stat red">92%</div>
+        <h3>Invisible to AI</h3>
+        <p>of local businesses have zero AI chatbot presence — their sites can't be found or cited.</p>
+        <div class="prob-sol">✓ We configure your digital presence so every AI crawler indexes your content.</div>
+        <div class="prob-src">BrightLocal 2025</div>
       </div>
-      <div class="stat-card">
-        <div class="stat-label">ADMIN TIME SAVED</div>
-        <div class="stat-num">-10+ hrs/wk</div>
-        <div class="stat-desc">Workflows run in the background, not by hand</div>
+      <div class="prob-card">
+        <div class="prob-stat blue">0</div>
+        <h3>No structured data</h3>
+        <p>schema markup items on the average SMB site. AI models can't understand what you do.</p>
+        <div class="prob-sol">✓ We add LocalBusiness, Service, FAQ schema — the language LLMs read first.</div>
+        <div class="prob-src">Schema.org Adoption Study</div>
       </div>
-      <div class="stat-card">
-        <div class="stat-label">MISSED FOLLOW-UPS</div>
-        <div class="stat-num">Near zero</div>
-        <div class="stat-desc">Consistent reminders and task triggers eliminate dropped leads</div>
+      <div class="prob-card">
+        <div class="prob-stat green">3.2×</div>
+        <h3>More qualified leads</h3>
+        <p>for businesses that appear in AI chatbot recommendations vs. those that don't.</p>
+        <div class="prob-sol">✓ Our system gets your business cited by ChatGPT, Perplexity, and Gemini.</div>
+        <div class="prob-src">HubSpot AI Search 2025</div>
+      </div>
+      <div class="prob-card">
+        <div class="prob-stat blue">70%</div>
+        <h3>Customers ask AI first</h3>
+        <p>of consumers now use AI chatbots to research local services before deciding.</p>
+        <div class="prob-sol">✓ Your V&M AI dashboard tracks AI visibility, competitors, and content performance.</div>
+        <div class="prob-src">Salesforce State of the Connected Customer</div>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- DARK HOW IT WORKS -->
+<div class="dark-how">
+  <div class="sec-label">HOW IT WORKS</div>
+  <div class="sec-title">From overwhelmed to in control —<br>in weeks, not months</div>
+  <div class="dark-steps">
+    <div class="dark-step">
+      <div class="dark-icon">📋</div>
+      <div class="dark-step-lbl">STEP 1</div>
+      <h3>We Audit</h3>
+      <p>We map every workflow in your business and find the biggest opportunities to automate.</p>
+    </div>
+    <div class="dark-step">
+      <div class="dark-icon">🔧</div>
+      <div class="dark-step-lbl">STEP 2</div>
+      <h3>We Build</h3>
+      <p>We design and implement custom AI automations tailored to your exact needs — fast.</p>
+    </div>
+    <div class="dark-step">
+      <div class="dark-icon">⚙️</div>
+      <div class="dark-step-lbl">STEP 3</div>
+      <h3>We Manage</h3>
+      <p>We monitor, optimize, and evolve your systems so they keep getting better over time.</p>
+    </div>
+  </div>
+  <div class="dark-btn-wrap">
+    <a href="book-a-call.html" class="btn-dark-cta">Get Your Free AI Audit →</a>
   </div>
 </div>
 
 <!-- COMPARE -->
-<div class="section">
-  <div class="section-label">THE NUMBERS</div>
-  <div class="section-title">Same business. Different operating system.</div>
+<div class="section" style="max-width:1100px;">
+  <div class="sec-label">THE NUMBERS</div>
+  <div class="sec-title">Same business. Different operating system.</div>
   <div class="compare-wrap">
-    <div class="compare-col bad">
-      <div class="compare-head"><div class="dot-bad">✕</div> Today</div>
-      <div class="compare-item"><div class="compare-item-label">WEEKLY ADMIN TIME</div><div class="compare-item-val">15+ hrs/week</div></div>
-      <div class="compare-item"><div class="compare-item-label">MISSED CALLS/WEEK</div><div class="compare-item-val">20+ calls</div></div>
-      <div class="compare-item"><div class="compare-item-label">LEAD RESPONSE TIME</div><div class="compare-item-val">4+ hours</div></div>
-      <div class="compare-item"><div class="compare-item-label">CLIENT FOLLOW-UP RATE</div><div class="compare-item-val">30%</div></div>
+    <div class="cmp bad">
+      <div class="cmp-head"><div class="dot-bad">✕</div> Today</div>
+      <div class="cmp-item"><div class="cmp-lbl">WEEKLY ADMIN TIME</div><div class="cmp-val">15+ hrs/week</div></div>
+      <div class="cmp-item"><div class="cmp-lbl">MISSED CALLS/WEEK</div><div class="cmp-val">20+ calls</div></div>
+      <div class="cmp-item"><div class="cmp-lbl">LEAD RESPONSE TIME</div><div class="cmp-val">4+ hours</div></div>
+      <div class="cmp-item"><div class="cmp-lbl">CLIENT FOLLOW-UP RATE</div><div class="cmp-val">30%</div></div>
     </div>
-    <div class="compare-col good">
-      <div class="compare-head"><div class="dot-good">✓</div> With ClearPath AI</div>
-      <div class="compare-item"><div class="compare-item-label">WEEKLY ADMIN TIME</div><div class="compare-item-val">2 hrs/week</div></div>
-      <div class="compare-item"><div class="compare-item-label">MISSED CALLS/WEEK</div><div class="compare-item-val">Zero</div></div>
-      <div class="compare-item"><div class="compare-item-label">LEAD RESPONSE TIME</div><div class="compare-item-val">&lt;60 seconds</div></div>
-      <div class="compare-item"><div class="compare-item-label">CLIENT FOLLOW-UP RATE</div><div class="compare-item-val">95%</div></div>
+    <div class="cmp good">
+      <div class="cmp-head"><div class="dot-good">✓</div> With V&amp;M AI Agency</div>
+      <div class="cmp-item"><div class="cmp-lbl">WEEKLY ADMIN TIME</div><div class="cmp-val">2 hrs/week</div></div>
+      <div class="cmp-item"><div class="cmp-lbl">MISSED CALLS/WEEK</div><div class="cmp-val">Zero</div></div>
+      <div class="cmp-item"><div class="cmp-lbl">LEAD RESPONSE TIME</div><div class="cmp-val">&lt;60 seconds</div></div>
+      <div class="cmp-item"><div class="cmp-lbl">CLIENT FOLLOW-UP RATE</div><div class="cmp-val">95%</div></div>
     </div>
   </div>
 </div>
 
 <!-- INDUSTRIES -->
-<div class="stats-bg">
+<div style="background:#f5f4ef;">
   <div class="section">
-    <div class="section-label">INDUSTRIES</div>
-    <div class="section-title">Built for how you operate</div>
-    <div class="industries-grid">
-      <div class="industry-card">
-        <div class="industry-icon">🦷</div>
-        <h3>Dental Offices</h3>
-        <p>Patient recall, appointment booking, and overdue cleaning reminders — all automated</p>
-        <a href="enterprise.html">Explore →</a>
-      </div>
-      <div class="industry-card">
-        <div class="industry-icon">🏠</div>
-        <h3>Real Estate</h3>
-        <p>Never lose a deal because you forgot to follow up. AI tracks every lead and tells you who to call</p>
-        <a href="clearpath-email-ai.vercel.app">Explore →</a>
-      </div>
-      <div class="industry-card">
-        <div class="industry-icon">💆</div>
-        <h3>Med Spas</h3>
-        <p>Recover lapsed Botox clients automatically. 15–20 clients re-engaged every month</p>
-        <a href="enterprise.html">Explore →</a>
-      </div>
-      <div class="industry-card">
-        <div class="industry-icon">⚖️</div>
-        <h3>Law Firms</h3>
-        <p>Client intake, document reminders, and follow-up — handled before you even check your email</p>
-        <a href="enterprise.html">Explore →</a>
-      </div>
+    <div class="sec-label">INDUSTRIES</div>
+    <div class="sec-title">Built for how you operate</div>
+    <div class="ind-grid">
+      <div class="ind-card"><div class="ind-icon">🦷</div><h3>Dental Offices</h3><p>Patient recall, appointment booking, and overdue cleaning reminders — automated</p><a href="enterprise.html">Explore →</a></div>
+      <div class="ind-card"><div class="ind-icon">🏠</div><h3>Real Estate</h3><p>Never lose a deal because you forgot to follow up. AI tracks every lead</p><a href="https://clearpath-email-ai.vercel.app">Explore →</a></div>
+      <div class="ind-card"><div class="ind-icon">💆</div><h3>Med Spas</h3><p>Recover lapsed Botox clients automatically. 15–20 clients re-engaged every month</p><a href="enterprise.html">Explore →</a></div>
+      <div class="ind-card"><div class="ind-icon">⚖️</div><h3>Law Firms</h3><p>Client intake, document reminders, and follow-up — handled automatically</p><a href="enterprise.html">Explore →</a></div>
     </div>
   </div>
 </div>
 
 <!-- WHY US -->
 <div class="section">
-  <div class="section-label">WHY US</div>
-  <div class="section-title">We don't sell AI hype.<br>We install the system that runs your business while you sleep.</div>
-  <div class="features-grid">
-    <div class="feature-card">
-      <div class="feature-icon">🏆</div>
-      <h3>Results in Days, Not Months</h3>
-      <p>Your AI receptionist is live within the hour. Your email assistant starts scanning immediately. No long onboarding, no training sessions.</p>
+  <div class="sec-label">WHY US</div>
+  <div class="sec-title">We don't sell AI hype.<br>We install the system that runs your business while you sleep.</div>
+  <div class="why-grid">
+    <div class="why-card"><div class="why-icon">🏆</div><h3>Results in Days, Not Months</h3><p>Your AI receptionist is live within the hour. Your email assistant starts scanning immediately. No long onboarding.</p></div>
+    <div class="why-card"><div class="why-icon">🛡️</div><h3>10+ Hours/Week Saved — Or You Don't Pay</h3><p>We guarantee our systems save you at least 10 hours per week. If they don't, you pay nothing. Zero risk.</p></div>
+    <div class="why-card"><div class="why-icon">💬</div><h3>Zero Jargon. Zero Learning Curve.</h3><p>We build it, wire it into tools you already use, and train your team in a single session. You approve with one tap.</p></div>
+    <div class="why-card"><div class="why-icon">🤝</div><h3>We Run It. You Reap It.</h3><p>Most agencies build and bounce. We manage, monitor, and evolve your AI systems every month so they keep getting better.</p></div>
+  </div>
+</div>
+
+<!-- SERVICE LADDER -->
+<div class="ladder-bg">
+  <div class="section">
+    <div class="ladder-header">
+      <div class="ladder-badge">5-TIER IMPLEMENTATION LADDER</div>
+      <div class="sec-title">From AI Tool Setup to Full Business Transformation</div>
+      <p class="sec-sub">We package delivery by outcome, not buzzwords: quick wins, full strategy, single workflow wins, department-level systems, and full AI-native operating infrastructure.</p>
     </div>
-    <div class="feature-card">
-      <div class="feature-icon">🛡️</div>
-      <h3>10+ Hours/Week Saved — Or You Don't Pay</h3>
-      <p>We guarantee our systems save you at least 10 hours per week. If they don't, you pay nothing. Zero risk.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">💬</div>
-      <h3>Zero Jargon. Zero Learning Curve.</h3>
-      <p>We don't send you a PDF and disappear. We build it, wire it into tools you already use, and it just works from day one.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">🤝</div>
-      <h3>We Run It. You Reap It.</h3>
-      <p>We manage, monitor, and improve your AI systems every month so they get better over time while you focus on your business.</p>
+    <div class="ladder-items">
+      <div class="ladder-item" onclick="toggleLadder(0)">
+        <div class="ladder-icon">⚙️</div>
+        <div class="ladder-name">1. AI Tool Setup + Training</div>
+      </div>
+      <div class="ladder-detail" id="ld0"><h4>AI Tool Setup + Training</h4><p>We set up your AI receptionist and email assistant, connect everything, and train you in one session.</p><div class="ladder-includes">WHAT'S INCLUDED</div><ul class="ladder-list"><li>AI Phone Receptionist setup</li><li>AI Email Assistant setup</li><li>1-hour training session</li><li>30-day support</li></ul></div>
+
+      <div class="ladder-item active" onclick="toggleLadder(1)">
+        <div class="ladder-icon">📋</div>
+        <div class="ladder-name">2. Full Audit + Strategy</div>
+        <div class="ladder-tag">CORE ENTRY POINT</div>
+      </div>
+      <div class="ladder-detail show" id="ld1"><h4>Full Audit + Strategy</h4><p>The most important tier. We run the 3-pillar strategy process to map workflows, find bottlenecks, quantify ROI, and produce the implementation architecture.</p><div class="ladder-includes">WHAT'S INCLUDED</div><ul class="ladder-list"><li>End-to-end process map by department</li><li>Bottleneck and risk report</li><li>ROI model with priority-ranked opportunities</li><li>90-day implementation roadmap</li></ul></div>
+
+      <div class="ladder-item" onclick="toggleLadder(2)">
+        <div class="ladder-icon">🔄</div>
+        <div class="ladder-name">3. Single Workflow Automation</div>
+      </div>
+      <div class="ladder-detail" id="ld2"><h4>Single Workflow Automation</h4><p>We pick your highest-ROI workflow and fully automate it — from trigger to outcome.</p><div class="ladder-includes">WHAT'S INCLUDED</div><ul class="ladder-list"><li>One end-to-end workflow automated</li><li>Integration with your existing tools</li><li>Testing and QA</li><li>Handoff documentation</li></ul></div>
+
+      <div class="ladder-item" onclick="toggleLadder(3)">
+        <div class="ladder-icon">🏢</div>
+        <div class="ladder-name">4. Full Department Build</div>
+      </div>
+      <div class="ladder-detail" id="ld3"><h4>Full Department Build</h4><p>We automate an entire department — sales, ops, customer service, or admin — end to end.</p><div class="ladder-includes">WHAT'S INCLUDED</div><ul class="ladder-list"><li>3–5 workflows automated</li><li>Custom AI agents for the department</li><li>Dashboard and reporting</li><li>Team training</li></ul></div>
+
+      <div class="ladder-item" onclick="toggleLadder(4)">
+        <div class="ladder-icon">🧠</div>
+        <div class="ladder-name">5. Centralized AI-Native Operating System</div>
+      </div>
+      <div class="ladder-detail" id="ld4"><h4>Centralized AI-Native Operating System</h4><p>We transform your entire business into an AI-native operation — every department, every workflow, fully optimized.</p><div class="ladder-includes">WHAT'S INCLUDED</div><ul class="ladder-list"><li>Full business audit and architecture</li><li>All department automations</li><li>Centralized AI command center</li><li>Ongoing monthly management</li></ul></div>
     </div>
   </div>
 </div>
 
-<!-- HOW IT WORKS -->
-<div class="how-bg">
-  <div class="section" style="text-align:center;">
-    <div class="section-label">HOW IT WORKS</div>
-    <div class="section-title">From overwhelmed to in control —<br>in days, not months</div>
-    <div style="display:flex; justify-content:center; gap:80px; margin-top:64px; flex-wrap:wrap;">
-      <div style="text-align:center; max-width:200px;">
-        <div style="width:64px;height:64px;background:#0a0a0a;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin:0 auto 20px;">📋</div>
-        <div style="font-size:3rem;font-weight:900;color:#e8e8e8;margin-bottom:8px;">01</div>
-        <h3 style="font-weight:800;margin-bottom:8px;">We Audit</h3>
-        <p style="font-size:0.875rem;color:#666;line-height:1.6;">We map your business and find exactly where AI will save the most time and money</p>
-      </div>
-      <div style="text-align:center; max-width:200px;">
-        <div style="width:64px;height:64px;background:#0a0a0a;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin:0 auto 20px;">🔧</div>
-        <div style="font-size:3rem;font-weight:900;color:#e8e8e8;margin-bottom:8px;">02</div>
-        <h3 style="font-weight:800;margin-bottom:8px;">We Build</h3>
-        <p style="font-size:0.875rem;color:#666;line-height:1.6;">We build and deploy your custom AI system — phone receptionist, email assistant, follow-up automation</p>
-      </div>
-      <div style="text-align:center; max-width:200px;">
-        <div style="width:64px;height:64px;background:#0a0a0a;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin:0 auto 20px;">⚙️</div>
-        <div style="font-size:3rem;font-weight:900;color:#e8e8e8;margin-bottom:8px;">03</div>
-        <h3 style="font-weight:800;margin-bottom:8px;">We Manage</h3>
-        <p style="font-size:0.875rem;color:#666;line-height:1.6;">We monitor, optimize, and evolve your systems every month so they keep getting better</p>
-      </div>
+<!-- ONGOING SUPPORT -->
+<div class="section">
+  <div style="text-align:center;margin-bottom:48px;">
+    <div style="display:inline-block;border:1px solid #e8e8e8;border-radius:999px;padding:6px 18px;font-size:0.72rem;font-weight:700;letter-spacing:1px;margin-bottom:18px;">PHASE 2: ONGOING SUPPORT</div>
+    <div class="sec-title">Keep shipping improvements after launch</div>
+    <p class="sec-sub" style="margin:0 auto;">Retainers are optional and designed for teams that want continuous execution, optimization, and monthly ROI expansion after initial implementation.</p>
+  </div>
+  <div class="ret-grid">
+    <div class="ret-card">
+      <div class="ret-name">Essentials</div>
+      <div class="ret-type">STABILITY AND UPKEEP</div>
+      <div class="ret-price">$750</div>
+      <div class="ret-per">/month</div>
+      <ul class="ret-list">
+        <li>Monthly system health check</li>
+        <li>Up to 5 support tickets</li>
+        <li>Quarterly optimization review</li>
+        <li>System uptime monitoring and alerts</li>
+      </ul>
     </div>
+    <div class="ret-card" style="border-color:#2563eb;">
+      <div class="ret-name">Growth</div>
+      <div class="ret-type">CONTINUOUS IMPROVEMENT</div>
+      <div class="ret-price">$1,500</div>
+      <div class="ret-per">/month</div>
+      <ul class="ret-list">
+        <li>Everything in Essentials</li>
+        <li>Unlimited support tickets</li>
+        <li>1 new automation per month</li>
+        <li>Bi-weekly strategy check-ins</li>
+        <li>Performance analytics dashboard</li>
+      </ul>
+    </div>
+    <div class="ret-card">
+      <div class="ret-name">Scale</div>
+      <div class="ret-type">EXECUTION PARTNER MODEL</div>
+      <div class="ret-price">$2,500</div>
+      <div class="ret-per">/month</div>
+      <ul class="ret-list">
+        <li>Everything in Growth</li>
+        <li>2 new automations per month</li>
+        <li>Dedicated account manager</li>
+        <li>Priority response (&lt;2 hours)</li>
+        <li>Monthly ROI reporting</li>
+      </ul>
+    </div>
+  </div>
+  <div class="includes-box">
+    <div style="text-align:center;font-size:1.3rem;font-weight:900;margin-bottom:8px;">What every tier includes</div>
+    <div style="text-align:center;font-size:0.85rem;color:#666;margin-bottom:24px;">No matter the price point, we ship with implementation discipline so your team can operate it reliably.</div>
+    <ul class="includes-list">
+      <li>Clear scope and success criteria before implementation starts</li>
+      <li>Operator-grade documentation, SOPs, and training assets</li>
+      <li>QA against bad inputs, edge cases, and failure modes</li>
+      <li>Handoff and owner visibility on ROI, costs, and next steps</li>
+    </ul>
   </div>
 </div>
 
 <!-- PRICING -->
-<div class="section">
-  <div class="section-label">PRICING</div>
-  <div class="section-title">Simple, transparent pricing</div>
-  <div class="pricing-grid">
-    <div class="price-card">
-      <div class="price-tier">STARTER</div>
-      <h3>AI Email Assistant</h3>
-      <div class="price-amount">$400</div>
-      <div class="price-per">/month · Cancel anytime</div>
-      <ul class="price-list">
-        <li>Daily inbox scan</li>
-        <li>Hot lead detection</li>
-        <li>Auto-drafted replies</li>
-        <li>Action priority list</li>
-        <li>Works with any Gmail</li>
-      </ul>
-      <a href="https://clearpath-email-ai.vercel.app" class="btn-price btn-price-outline">Start Free Trial</a>
+<div style="background:#f5f4ef;">
+  <div class="section">
+    <div class="sec-label">QUICK START PRICING</div>
+    <div class="sec-title">Simple, transparent pricing</div>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-tier">STARTER</div>
+        <h3>AI Email Assistant</h3>
+        <div class="price-amount">$400</div>
+        <div class="price-per">/month · Cancel anytime</div>
+        <ul class="price-list"><li>Daily inbox scan</li><li>Hot lead detection</li><li>Auto-drafted replies</li><li>Action priority list</li><li>Works with any Gmail</li></ul>
+        <a href="https://clearpath-email-ai.vercel.app" class="btn-price btn-outline">Start Free Trial</a>
+      </div>
+      <div class="price-card featured">
+        <div class="price-tier">MOST POPULAR</div>
+        <h3>AI Phone Receptionist</h3>
+        <div class="price-amount">$750</div>
+        <div class="price-per">/month · Setup in 10 min</div>
+        <ul class="price-list"><li>Answers every call 24/7</li><li>Books appointments</li><li>Takes messages</li><li>Transfers to staff</li><li>Unlimited calls</li></ul>
+        <a href="https://clearpath-ai.myshopify.com" class="btn-price btn-white">Get Started →</a>
+      </div>
+      <div class="price-card">
+        <div class="price-tier">ENTERPRISE</div>
+        <h3>Custom AI System</h3>
+        <div class="price-amount">$5K+</div>
+        <div class="price-per">/month · Full custom build</div>
+        <ul class="price-list"><li>Full business audit</li><li>Custom AI workflows</li><li>Department automation</li><li>Dedicated support</li><li>Monthly optimization</li></ul>
+        <a href="book-a-call.html" class="btn-price btn-dark">Book a Call</a>
+      </div>
     </div>
-    <div class="price-card featured">
-      <div class="price-tier">MOST POPULAR</div>
-      <h3>AI Phone Receptionist</h3>
-      <div class="price-amount">$750</div>
-      <div class="price-per">/month · Setup in 10 minutes</div>
-      <ul class="price-list">
-        <li>Answers every call 24/7</li>
-        <li>Books appointments</li>
-        <li>Takes messages</li>
-        <li>Transfers to staff</li>
-        <li>Unlimited calls</li>
-      </ul>
-      <a href="https://clearpath-ai.myshopify.com" class="btn-price btn-price-white">Get Started →</a>
-    </div>
-    <div class="price-card">
-      <div class="price-tier">ENTERPRISE</div>
-      <h3>Custom AI System</h3>
-      <div class="price-amount">$5K+</div>
-      <div class="price-per">/month · Full custom build</div>
-      <ul class="price-list">
-        <li>Full business audit</li>
-        <li>Custom AI workflows</li>
-        <li>Department automation</li>
-        <li>Dedicated support</li>
-        <li>Monthly optimization</li>
-      </ul>
-      <a href="enterprise.html" class="btn-price btn-price-dark">Book a Call</a>
+    <div style="text-align:center;margin-top:40px;">
+      <p style="font-size:0.95rem;font-weight:700;margin-bottom:16px;">Start with strategy, then scale what works</p>
+      <p style="font-size:0.85rem;color:#666;margin-bottom:28px;">Tier 2 is where we de-risk decisions, lock ROI priorities, and avoid expensive rebuilds later.</p>
+      <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
+        <a href="book-a-call.html" style="background:#0a0a0a;color:#fff;padding:14px 28px;border-radius:999px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:8px;">Book a Strategy Call →</a>
+        <a href="solutions.html" style="border:2px solid #e8e8e8;color:#0a0a0a;padding:14px 28px;border-radius:999px;font-weight:600;text-decoration:none;">View Pricing Breakdown</a>
+      </div>
     </div>
   </div>
 </div>
 
 <!-- FAQ -->
-<div class="stats-bg">
-  <div class="section" style="text-align:center;">
-    <div class="section-label">COMMON QUESTIONS</div>
-    <div class="section-title">Before you decide, get your questions answered</div>
-    <div class="faq-list">
-      <div class="faq-item">
-        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-          How fast can I get set up? <span class="faq-plus">+</span>
-        </div>
-        <div class="faq-a">The AI Phone Receptionist is live within 1 hour. You forward your business number to our AI number and it starts answering calls immediately. The Email Assistant connects to Gmail in under 2 minutes.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-          Do I need any technical knowledge? <span class="faq-plus">+</span>
-        </div>
-        <div class="faq-a">None at all. We handle everything. You just forward your phone number and connect your Gmail — we do the rest. No new software, no training required.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-          What if it doesn't save me 10 hours/week? <span class="faq-plus">+</span>
-        </div>
-        <div class="faq-a">We guarantee it will. If you're not saving at least 10 hours per week within the first month, you don't pay. We'll work with you until it does, or give you a full refund.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-          Can I cancel anytime? <span class="faq-plus">+</span>
-        </div>
-        <div class="faq-a">Yes. No contracts, no commitments. Cancel anytime with one message.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-          What industries do you work with? <span class="faq-plus">+</span>
-        </div>
-        <div class="faq-a">We specialize in dental offices, real estate agents, med spas, law firms, and home services businesses in the Miami area — but we work with any business that gets leads by phone or email.</div>
-      </div>
-    </div>
+<div class="section" style="text-align:center;">
+  <div class="sec-label">FAQ</div>
+  <div class="sec-title">Common questions</div>
+  <div class="faq-list" style="margin-top:48px;">
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How fast can I get set up? <span class="faq-arr">›</span></div><div class="faq-a">The AI Phone Receptionist is live within 1 hour. The Email Assistant connects to Gmail in under 2 minutes. No technical knowledge needed.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do I need any technical knowledge? <span class="faq-arr">›</span></div><div class="faq-a">None at all. You just forward your phone number and connect your Gmail — we do the rest.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What if it doesn't save me 10 hours/week? <span class="faq-arr">›</span></div><div class="faq-a">We guarantee it will. If you're not saving at least 10 hours per week within the first month, you don't pay. Zero risk.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can I cancel anytime? <span class="faq-arr">›</span></div><div class="faq-a">Yes. No contracts, no commitments. Cancel anytime with one message.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What industries do you work with? <span class="faq-arr">›</span></div><div class="faq-a">We specialize in dental offices, real estate agents, med spas, law firms, and home services — but we work with any business that gets leads by phone or email.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How quickly can we see results? <span class="faq-arr">›</span></div><div class="faq-a">Most clients see immediate results within the first 48 hours. The AI answers calls from day one, and the email assistant surfaces hot leads on the first scan.</div></div>
   </div>
 </div>
 
 <!-- CTA -->
-<div class="cta-section">
-  <h2>You're one call away from seeing exactly where your business is leaking time and money.</h2>
-  <p>No commitment. No credit card. We'll show you exactly what AI can do for your business — for free.</p>
+<div class="cta-dark">
+  <h2>Your competitors are already using AI.<br><span style="color:#60a5fa;">Are you?</span></h2>
+  <p>Book a free 15-minute call. We'll show you exactly where your business is leaking time and money — and how to fix it.</p>
   <div class="cta-badges">
-    <span>⚡ SETUP IN UNDER 1 HOUR</span>
-    <span>·</span>
-    <span>🛡️ RESULTS GUARANTEED</span>
-    <span>·</span>
+    <span>⚡ SETUP IN UNDER 1 HOUR</span><span>·</span>
+    <span>🛡️ RESULTS GUARANTEED</span><span>·</span>
     <span>❌ CANCEL ANYTIME</span>
   </div>
   <div class="cta-btns">
-    <a href="https://clearpath-ai.myshopify.com" class="btn-cta-white">🚀 Get Started</a>
-    <a href="enterprise.html" class="btn-cta-ghost">Or talk to us directly</a>
+    <a href="book-a-call.html" class="btn-cta-w">🚀 Book a Free Call</a>
+    <a href="enterprise.html" class="btn-cta-g">Or contact us directly</a>
   </div>
 </div>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-top">
-    <div class="footer-brand">
-      <div style="font-weight:900;font-size:1.1rem;">ClearPath <span style="color:#2563eb;">AI</span></div>
+  <div class="ft">
+    <div class="ft-brand">
+      <div class="ft-logo"><div class="ft-logo-icon">VM</div>V&amp;M <span>AI Agency</span></div>
       <p>We help small businesses save 15+ hours/week with AI automation.</p>
     </div>
-    <div class="footer-col">
-      <h4>SERVICES</h4>
-      <a href="https://clearpath-ai.myshopify.com">AI Receptionist</a>
-      <a href="https://clearpath-email-ai.vercel.app">Email Assistant</a>
-      <a href="enterprise.html">Enterprise</a>
-    </div>
-    <div class="footer-col">
-      <h4>INDUSTRIES</h4>
-      <a href="#">Dental</a>
-      <a href="#">Real Estate</a>
-      <a href="#">Med Spa</a>
-      <a href="#">Law Firms</a>
-    </div>
-    <div class="footer-col">
-      <h4>COMPANY</h4>
-      <a href="#">About</a>
-      <a href="enterprise.html">Contact</a>
-      <a href="https://clearpath-ai.myshopify.com">Shop</a>
-    </div>
+    <div class="ft-col"><h4>SERVICES</h4><a href="https://clearpath-ai.myshopify.com">AI Receptionist</a><a href="https://clearpath-email-ai.vercel.app">Email Assistant</a><a href="solutions.html">All Services</a><a href="enterprise.html">Enterprise</a></div>
+    <div class="ft-col"><h4>INDUSTRIES</h4><a href="#">Dental</a><a href="#">Real Estate</a><a href="#">Med Spa</a><a href="#">Law Firms</a></div>
+    <div class="ft-col"><h4>COMPANY</h4><a href="blog.html">Blog</a><a href="free-tools.html">Free Tools</a><a href="book-a-call.html">Book a Call</a><a href="enterprise.html">Contact</a></div>
   </div>
-  <div class="footer-bottom">© 2026 ClearPath AI · Miami, FL</div>
+  <div class="ft-bottom">© 2026 V&amp;M AI Agency · Miami, FL</div>
 </footer>
 
+<script>
+function doScan(){
+  var v=document.getElementById('scanInput').value;
+  if(!v){alert('Please enter your website URL first!');return;}
+  window.location.href='book-a-call.html';
+}
+function toggleLadder(i){
+  for(var j=0;j<5;j++){
+    document.getElementById('ld'+j).classList.remove('show');
+    document.querySelectorAll('.ladder-item')[j].classList.remove('active');
+  }
+  document.getElementById('ld'+i).classList.add('show');
+  document.querySelectorAll('.ladder-item')[i].classList.add('active');
+}
+</script>
 </body>
 </html>

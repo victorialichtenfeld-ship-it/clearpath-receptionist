@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — V&M AI Agency</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:'Helvetica Neue',Arial,sans-serif;background:#fff;color:#0a0a0a;}
+    nav{display:flex;justify-content:space-between;align-items:center;padding:16px 40px;background:#fff;border-bottom:1px solid #eee;position:sticky;top:0;z-index:100;}
+    .nav-logo{font-weight:900;font-size:1rem;display:flex;align-items:center;gap:10px;text-decoration:none;color:#0a0a0a;}
+    .nav-logo-icon{width:32px;height:32px;background:#0a0a0a;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:0.7rem;font-weight:900;}
+    .nav-logo-text span{color:#2563eb;}
+    .nav-links{display:flex;gap:28px;font-size:0.875rem;}
+    .nav-links a{text-decoration:none;color:#555;}
+    .nav-links a:hover{color:#0a0a0a;}
+    .nav-cta{background:#1a3a2a;color:#fff;padding:10px 22px;border-radius:999px;font-size:0.875rem;font-weight:600;text-decoration:none;white-space:nowrap;}
+
+    .page-hero{background:#0a0a0a;color:#fff;padding:80px 40px;text-align:center;}
+    .page-label{font-size:0.68rem;letter-spacing:2px;color:#60a5fa;font-weight:700;margin-bottom:14px;}
+    .page-hero h1{font-size:clamp(2rem,4vw,2.8rem);font-weight:900;line-height:1.15;margin-bottom:14px;}
+    .page-hero p{opacity:0.6;font-size:1rem;max-width:520px;margin:0 auto;line-height:1.7;}
+
+    .blog-wrap{max-width:1100px;margin:0 auto;padding:80px 40px;}
+    .blog-top{display:grid;grid-template-columns:2fr 1fr;gap:28px;margin-bottom:28px;}
+
+    /* Featured post */
+    .post-featured{border:1px solid #e8e8e8;border-radius:24px;overflow:hidden;background:#fff;cursor:pointer;transition:box-shadow 0.2s;}
+    .post-featured:hover{box-shadow:0 8px 32px rgba(0,0,0,0.08);}
+    .feat-img{height:260px;background:linear-gradient(135deg,#0a0a0a,#1e3a5f);display:flex;align-items:flex-end;padding:28px;position:relative;}
+    .feat-img-emoji{position:absolute;top:50%;left:50%;transform:translate(-50%,-60%);font-size:4rem;}
+    .feat-cat{background:#2563eb;color:#fff;font-size:0.65rem;font-weight:700;letter-spacing:2px;padding:4px 12px;border-radius:999px;}
+    .feat-body{padding:28px;}
+    .feat-body h2{font-size:1.4rem;font-weight:900;margin:12px 0 10px;line-height:1.25;}
+    .feat-body p{font-size:0.87rem;color:#555;line-height:1.65;margin-bottom:18px;}
+    .post-meta{display:flex;align-items:center;gap:16px;font-size:0.78rem;color:#999;}
+    .read-link{color:#2563eb;font-weight:700;text-decoration:none;font-size:0.85rem;}
+    .read-link:hover{text-decoration:underline;}
+
+    /* Side posts */
+    .posts-side{display:flex;flex-direction:column;gap:16px;}
+    .post-sm{border:1px solid #e8e8e8;border-radius:16px;padding:20px;background:#fff;cursor:pointer;transition:box-shadow 0.2s;}
+    .post-sm:hover{box-shadow:0 4px 16px rgba(0,0,0,0.07);}
+    .post-sm-icon{font-size:1.8rem;margin-bottom:10px;}
+    .post-sm-cat{font-size:0.62rem;font-weight:700;letter-spacing:1.5px;color:#2563eb;margin-bottom:6px;}
+    .post-sm h3{font-size:0.92rem;font-weight:800;margin-bottom:6px;line-height:1.3;}
+    .post-sm p{font-size:0.78rem;color:#666;line-height:1.5;margin-bottom:10px;}
+    .post-sm-meta{font-size:0.72rem;color:#bbb;}
+
+    /* Grid posts */
+    .posts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:28px;}
+    .post-card{border:1px solid #e8e8e8;border-radius:18px;overflow:hidden;background:#fff;cursor:pointer;transition:box-shadow 0.2s;}
+    .post-card:hover{box-shadow:0 6px 24px rgba(0,0,0,0.07);}
+    .pc-img{height:140px;display:flex;align-items:center;justify-content:center;font-size:2.8rem;}
+    .pc-img.c1{background:linear-gradient(135deg,#f0f9ff,#e0f2fe);}
+    .pc-img.c2{background:linear-gradient(135deg,#fef9ee,#fef3c7);}
+    .pc-img.c3{background:linear-gradient(135deg,#f0fdf4,#dcfce7);}
+    .pc-img.c4{background:linear-gradient(135deg,#fdf4ff,#f3e8ff);}
+    .pc-img.c5{background:linear-gradient(135deg,#fff5f0,#fed7aa);}
+    .pc-img.c6{background:linear-gradient(135deg,#f8faff,#dbeafe);}
+    .pc-body{padding:20px;}
+    .pc-cat{font-size:0.62rem;font-weight:700;letter-spacing:1.5px;color:#2563eb;margin-bottom:7px;}
+    .pc-body h3{font-size:0.95rem;font-weight:800;margin-bottom:7px;line-height:1.3;}
+    .pc-body p{font-size:0.78rem;color:#666;line-height:1.5;margin-bottom:12px;}
+    .pc-meta{display:flex;justify-content:space-between;font-size:0.72rem;color:#bbb;}
+
+    /* Newsletter */
+    .newsletter{background:#f5f4ef;border-radius:20px;padding:48px;margin-top:28px;text-align:center;}
+    .newsletter h2{font-size:1.5rem;font-weight:900;margin-bottom:8px;}
+    .newsletter p{font-size:0.88rem;color:#666;margin-bottom:28px;line-height:1.65;}
+    .nl-form{display:flex;gap:10px;max-width:480px;margin:0 auto;}
+    .nl-form input{flex:1;padding:12px 16px;border:1px solid #ddd;border-radius:10px;font-size:0.875rem;outline:none;}
+    .nl-form input:focus{border-color:#2563eb;}
+    .nl-form button{background:#2563eb;color:#fff;border:none;padding:12px 22px;border-radius:10px;font-weight:700;font-size:0.875rem;cursor:pointer;white-space:nowrap;}
+    .nl-form button:hover{background:#1d4ed8;}
+    .nl-note{font-size:0.72rem;color:#aaa;margin-top:10px;}
+
+    footer{background:#0a0a0a;color:#fff;padding:48px 40px 24px;}
+    .ft-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:32px;flex-wrap:wrap;gap:20px;}
+    .ft-logo{font-weight:900;font-size:1rem;display:flex;align-items:center;gap:8px;}
+    .ft-logo-icon{width:28px;height:28px;background:#fff;border-radius:6px;display:flex;align-items:center;justify-content:center;color:#0a0a0a;font-size:0.6rem;font-weight:900;}
+    .ft-logo span{color:#2563eb;}
+    .ft-links{display:flex;gap:24px;}
+    .ft-links a{font-size:0.85rem;color:#888;text-decoration:none;}
+    .ft-links a:hover{color:#fff;}
+    .ft-bot{border-top:1px solid #1a1a1a;padding-top:16px;font-size:0.78rem;opacity:0.35;text-align:center;}
+
+    @media(max-width:900px){
+      nav{padding:14px 20px;}.nav-links{display:none;}
+      .blog-top{grid-template-columns:1fr;}
+      .posts-grid{grid-template-columns:1fr 1fr;}
+      .blog-wrap{padding:56px 20px;}
+      .nl-form{flex-direction:column;}
+    }
+    @media(max-width:600px){.posts-grid{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-icon">VM</div>
+    <div class="nav-logo-text">V&amp;M <span>AI Agency</span></div>
+  </a>
+  <div class="nav-links">
+    <a href="solutions.html">Solutions</a>
+    <a href="free-tools.html">Free Tools</a>
+    <a href="enterprise.html">Enterprise</a>
+    <a href="blog.html">Blog</a>
+    <a href="book-a-call.html">Book a Call</a>
+  </div>
+  <a href="book-a-call.html" class="nav-cta">Book a 15-min Call →</a>
+</nav>
+
+<div class="page-hero">
+  <div class="page-label">BLOG</div>
+  <h1>AI for Small Business —<br>Practical Guides & Case Studies</h1>
+  <p>Real tactics, real results. Learn how small businesses are using AI to save 10–20 hours a week and close more deals.</p>
+</div>
+
+<div class="blog-wrap">
+
+  <div class="blog-top">
+    <div class="post-featured">
+      <div class="feat-img">
+        <div class="feat-img-emoji">📞</div>
+        <div class="feat-cat">CASE STUDY</div>
+      </div>
+      <div class="feat-body">
+        <div class="post-meta"><span>May 2025</span><span>·</span><span>6 min read</span></div>
+        <h2>How a Dental Practice Stopped Missing $12,000 in Monthly Revenue From After-Hours Calls</h2>
+        <p>Dr. Marcus T. was losing 8–12 potential new patients every week to voicemail. After installing an AI receptionist, his booking rate after 6pm went from 0% to 73%.</p>
+        <a href="book-a-call.html" class="read-link">Read Case Study →</a>
+      </div>
+    </div>
+    <div class="posts-side">
+      <div class="post-sm">
+        <div class="post-sm-icon">✉️</div>
+        <div class="post-sm-cat">GUIDE</div>
+        <h3>The 5-Minute Inbox Triage Every Real Estate Agent Should Do</h3>
+        <p>How to use AI to find your 3 most important emails before your morning coffee.</p>
+        <div class="post-sm-meta">May 2025 · 4 min read</div>
+      </div>
+      <div class="post-sm">
+        <div class="post-sm-icon">🤖</div>
+        <div class="post-sm-cat">EXPLAINER</div>
+        <h3>Why Your Business Doesn't Show Up When People Ask ChatGPT</h3>
+        <p>The new SEO no one's talking about — and how to fix it in 30 days.</p>
+        <div class="post-sm-meta">Apr 2025 · 5 min read</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="posts-grid">
+    <div class="post-card">
+      <div class="pc-img c1">🔄</div>
+      <div class="pc-body">
+        <div class="pc-cat">STRATEGY</div>
+        <h3>Why 80% of Sales Happen on Follow-Up #5–12 (And How to Automate All of Them)</h3>
+        <p>Most businesses stop following up after 1 or 2 attempts. Here's what you're leaving on the table.</p>
+        <div class="pc-meta"><span>Apr 2025</span><span>5 min</span></div>
+      </div>
+    </div>
+    <div class="post-card">
+      <div class="pc-img c2">💰</div>
+      <div class="pc-body">
+        <div class="pc-cat">ROI</div>
+        <h3>What Is Each Missed Call Actually Costing You? (Do The Math)</h3>
+        <p>A simple formula to calculate the real revenue impact of every unanswered phone call.</p>
+        <div class="pc-meta"><span>Apr 2025</span><span>3 min</span></div>
+      </div>
+    </div>
+    <div class="post-card">
+      <div class="pc-img c3">🏥</div>
+      <div class="pc-body">
+        <div class="pc-cat">INDUSTRY</div>
+        <h3>AI for Med Spas: How to Fill Your Schedule Without a Full-Time Receptionist</h3>
+        <p>A walkthrough of exactly how we set up AI booking for a Miami med spa in 48 hours.</p>
+        <div class="pc-meta"><span>Mar 2025</span><span>7 min</span></div>
+      </div>
+    </div>
+    <div class="post-card">
+      <div class="pc-img c4">📋</div>
+      <div class="pc-body">
+        <div class="pc-cat">GUIDE</div>
+        <h3>The Small Business AI Checklist: 10 Things to Automate This Month</h3>
+        <p>Start here if you want quick wins. These 10 automations take under a week to set up.</p>
+        <div class="pc-meta"><span>Mar 2025</span><span>8 min</span></div>
+      </div>
+    </div>
+    <div class="post-card">
+      <div class="pc-img c5">🏠</div>
+      <div class="pc-body">
+        <div class="pc-cat">CASE STUDY</div>
+        <h3>Real Estate Agent Closes 3 Extra Deals in 60 Days Using AI Email Analysis</h3>
+        <p>Sarah noticed she had 6 hot leads sitting in her inbox for days. AI found them instantly.</p>
+        <div class="pc-meta"><span>Feb 2025</span><span>5 min</span></div>
+      </div>
+    </div>
+    <div class="post-card">
+      <div class="pc-img c6">⚖️</div>
+      <div class="pc-body">
+        <div class="pc-cat">INDUSTRY</div>
+        <h3>AI Intake for Law Firms: Qualify Leads Before They Reach Your Desk</h3>
+        <p>How small law firms are using AI to screen consultations and save 6 hours per attorney per week.</p>
+        <div class="pc-meta"><span>Feb 2025</span><span>6 min</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="newsletter">
+    <h2>Get AI Tips in Your Inbox</h2>
+    <p>One practical AI tip per week for small business owners. No fluff, no jargon — just things you can actually use.</p>
+    <div class="nl-form">
+      <input type="email" placeholder="your@email.com">
+      <button onclick="nlSubmit(this)">Subscribe Free →</button>
+    </div>
+    <div class="nl-note">Join 2,400+ small business owners. Unsubscribe anytime.</div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="ft-row">
+    <div class="ft-logo">
+      <div class="ft-logo-icon">VM</div>
+      V&amp;M <span>AI Agency</span>
+    </div>
+    <div class="ft-links">
+      <a href="solutions.html">Solutions</a>
+      <a href="free-tools.html">Free Tools</a>
+      <a href="blog.html">Blog</a>
+      <a href="book-a-call.html">Book a Call</a>
+    </div>
+  </div>
+  <div class="ft-bot">© 2025 V&M AI Agency. All rights reserved.</div>
+</footer>
+
+<script>
+  function nlSubmit(btn){
+    const input = btn.previousElementSibling;
+    if(!input.value || !input.value.includes('@')){input.focus();return;}
+    btn.textContent = '✓ Subscribed!';
+    btn.style.background = '#16a34a';
+    input.value = '';
+    input.disabled = true;
+    btn.disabled = true;
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book a Free Call — V&M AI Agency</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:'Helvetica Neue',Arial,sans-serif;background:#fff;color:#0a0a0a;}
+    nav{display:flex;justify-content:space-between;align-items:center;padding:16px 40px;background:#fff;border-bottom:1px solid #eee;position:sticky;top:0;z-index:100;}
+    .nav-logo{font-weight:900;font-size:1rem;display:flex;align-items:center;gap:10px;text-decoration:none;color:#0a0a0a;}
+    .nav-logo-icon{width:32px;height:32px;background:#0a0a0a;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:0.7rem;font-weight:900;}
+    .nav-logo-text span{color:#2563eb;}
+    .nav-links{display:flex;gap:28px;font-size:0.875rem;}
+    .nav-links a{text-decoration:none;color:#555;}
+    .nav-links a:hover{color:#0a0a0a;}
+    .nav-cta{background:#1a3a2a;color:#fff;padding:10px 22px;border-radius:999px;font-size:0.875rem;font-weight:600;text-decoration:none;white-space:nowrap;}
+
+    .page-hero{background:#0a0a0a;color:#fff;padding:72px 40px;text-align:center;}
+    .page-label{font-size:0.68rem;letter-spacing:2px;color:#60a5fa;font-weight:700;margin-bottom:14px;}
+    .page-hero h1{font-size:clamp(2rem,4vw,3rem);font-weight:900;line-height:1.15;margin-bottom:14px;}
+    .page-hero h1 span{color:#60a5fa;}
+    .page-hero p{opacity:0.6;font-size:1rem;max-width:520px;margin:0 auto;line-height:1.7;}
+
+    .booking-wrap{max-width:1100px;margin:0 auto;padding:80px 40px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
+    .booking-left h2{font-size:1.6rem;font-weight:900;margin-bottom:16px;line-height:1.2;}
+    .booking-left p{font-size:0.92rem;color:#555;line-height:1.7;margin-bottom:32px;}
+    .trust-row{display:flex;flex-direction:column;gap:14px;margin-bottom:40px;}
+    .trust-item{display:flex;align-items:flex-start;gap:14px;}
+    .trust-icon{width:42px;height:42px;background:#eff6ff;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;}
+    .trust-text h4{font-size:0.9rem;font-weight:700;margin-bottom:3px;}
+    .trust-text p{font-size:0.8rem;color:#666;line-height:1.5;}
+    .social-proof{background:#f5f4ef;border-radius:16px;padding:24px;}
+    .sp-quote{font-size:0.9rem;color:#333;line-height:1.65;margin-bottom:16px;font-style:italic;}
+    .sp-name{font-size:0.82rem;font-weight:700;}
+    .sp-role{font-size:0.78rem;color:#999;}
+    .stars{color:#f59e0b;font-size:0.9rem;margin-bottom:10px;}
+
+    .booking-form{background:#fff;border:1px solid #e8e8e8;border-radius:20px;padding:36px;box-shadow:0 8px 40px rgba(0,0,0,0.06);}
+    .form-title{font-size:1.1rem;font-weight:800;margin-bottom:6px;}
+    .form-sub{font-size:0.82rem;color:#888;margin-bottom:28px;}
+    .field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+    .field{margin-bottom:18px;}
+    .field label{display:block;font-size:0.78rem;font-weight:700;color:#444;margin-bottom:6px;letter-spacing:0.5px;}
+    .field input,.field select,.field textarea{width:100%;padding:12px 14px;border:1px solid #e0e0e0;border-radius:10px;font-size:0.88rem;color:#0a0a0a;outline:none;font-family:inherit;background:#fafafa;transition:border 0.2s;}
+    .field input:focus,.field select:focus,.field textarea:focus{border-color:#2563eb;background:#fff;}
+    .field textarea{resize:vertical;min-height:90px;}
+    .field select{cursor:pointer;}
+    .submit-btn{width:100%;background:#2563eb;color:#fff;border:none;padding:15px;border-radius:999px;font-size:0.95rem;font-weight:700;cursor:pointer;margin-top:6px;transition:background 0.2s;}
+    .submit-btn:hover{background:#1d4ed8;}
+    .form-note{text-align:center;font-size:0.75rem;color:#aaa;margin-top:12px;}
+
+    .success-msg{display:none;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:16px;padding:32px;text-align:center;}
+    .success-msg h3{color:#15803d;font-size:1.2rem;font-weight:800;margin-bottom:8px;}
+    .success-msg p{color:#166534;font-size:0.88rem;line-height:1.6;}
+
+    .faq-section{background:#f5f4ef;padding:80px 40px;}
+    .faq-inner{max-width:700px;margin:0 auto;}
+    .faq-inner h2{font-size:1.8rem;font-weight:900;margin-bottom:40px;text-align:center;}
+    .faq-list{display:flex;flex-direction:column;gap:10px;}
+    .faq-item{border:1px solid #e8e8e8;border-radius:14px;overflow:hidden;background:#fff;}
+    .faq-q{padding:18px 22px;font-weight:600;font-size:0.9rem;display:flex;justify-content:space-between;align-items:center;cursor:pointer;}
+    .faq-q:hover{background:#f8f8f8;}
+    .faq-a{padding:0 22px 18px;font-size:0.84rem;color:#666;line-height:1.7;display:none;}
+    .faq-item.open .faq-a{display:block;}
+    .faq-arr{color:#bbb;transition:transform 0.2s;}
+    .faq-item.open .faq-arr{transform:rotate(90deg);}
+
+    footer{background:#0a0a0a;color:#fff;padding:48px 40px 24px;}
+    .ft-bot{border-top:1px solid #1a1a1a;padding-top:16px;font-size:0.78rem;opacity:0.35;text-align:center;}
+    .ft-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:32px;flex-wrap:wrap;gap:20px;}
+    .ft-logo{font-weight:900;font-size:1rem;display:flex;align-items:center;gap:8px;}
+    .ft-logo-icon{width:28px;height:28px;background:#fff;border-radius:6px;display:flex;align-items:center;justify-content:center;color:#0a0a0a;font-size:0.6rem;font-weight:900;}
+    .ft-logo span{color:#2563eb;}
+    .ft-links{display:flex;gap:24px;}
+    .ft-links a{font-size:0.85rem;color:#888;text-decoration:none;}
+    .ft-links a:hover{color:#fff;}
+    @media(max-width:900px){
+      .booking-wrap{grid-template-columns:1fr;gap:40px;padding:48px 20px;}
+      .field-row{grid-template-columns:1fr;}
+      nav{padding:14px 20px;}.nav-links{display:none;}
+      .faq-section{padding:60px 20px;}
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-icon">VM</div>
+    <div class="nav-logo-text">V&amp;M <span>AI Agency</span></div>
+  </a>
+  <div class="nav-links">
+    <a href="solutions.html">Solutions</a>
+    <a href="free-tools.html">Free Tools</a>
+    <a href="enterprise.html">Enterprise</a>
+    <a href="blog.html">Blog</a>
+    <a href="book-a-call.html">Book a Call</a>
+  </div>
+  <a href="book-a-call.html" class="nav-cta">Book a 15-min Call →</a>
+</nav>
+
+<div class="page-hero">
+  <div class="page-label">SCHEDULE A CALL</div>
+  <h1>Let's Build Your<br><span>AI System</span></h1>
+  <p>15 minutes. No pressure. We'll show you exactly what AI can do for your business and what it costs — no fluff.</p>
+</div>
+
+<div class="booking-wrap">
+  <div class="booking-left">
+    <h2>What happens on the call?</h2>
+    <p>We do a quick audit of where you're losing time and money, then map out a custom AI system that plugs those holes. You walk away with a clear plan whether you hire us or not.</p>
+    <div class="trust-row">
+      <div class="trust-item">
+        <div class="trust-icon">🔍</div>
+        <div class="trust-text">
+          <h4>Free Business Audit</h4>
+          <p>We review your current workflow and identify exactly where AI can save 10–20 hours/week.</p>
+        </div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">🗺️</div>
+        <div class="trust-text">
+          <h4>Custom AI Roadmap</h4>
+          <p>Get a step-by-step plan tailored to your business — not a generic sales pitch.</p>
+        </div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">💰</div>
+        <div class="trust-text">
+          <h4>Transparent Pricing</h4>
+          <p>We tell you exactly what everything costs upfront. No surprise fees, ever.</p>
+        </div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">🛡️</div>
+        <div class="trust-text">
+          <h4>Zero Pressure</h4>
+          <p>No hard close, no follow-up spam. If we're not a fit, we'll say so honestly.</p>
+        </div>
+      </div>
+    </div>
+    <div class="social-proof">
+      <div class="stars">★★★★★</div>
+      <p class="sp-quote">"I was skeptical AI could actually help my dental practice. After the free call I had a clear plan. Within 2 weeks the AI receptionist had already paid for itself — we stopped missing calls after hours."</p>
+      <div class="sp-name">Dr. Marcus T.</div>
+      <div class="sp-role">Dental Practice Owner, Miami FL</div>
+    </div>
+  </div>
+
+  <div>
+    <div class="booking-form" id="form-block">
+      <div class="form-title">Book Your Free 15-min Call</div>
+      <div class="form-sub">Fill out below and we'll confirm your spot within 1 business hour.</div>
+      <form id="contact-form" onsubmit="submitForm(event)">
+        <div class="field-row">
+          <div class="field">
+            <label>First Name *</label>
+            <input type="text" name="first_name" required placeholder="John">
+          </div>
+          <div class="field">
+            <label>Last Name *</label>
+            <input type="text" name="last_name" required placeholder="Smith">
+          </div>
+        </div>
+        <div class="field">
+          <label>Business Email *</label>
+          <input type="email" name="email" required placeholder="john@yourbusiness.com">
+        </div>
+        <div class="field">
+          <label>Phone Number *</label>
+          <input type="tel" name="phone" required placeholder="+1 (555) 000-0000">
+        </div>
+        <div class="field">
+          <label>Business Type *</label>
+          <select name="business_type" required>
+            <option value="" disabled selected>Select your industry</option>
+            <option>Dental / Medical Practice</option>
+            <option>Real Estate / Property</option>
+            <option>Law Firm</option>
+            <option>Med Spa / Aesthetics</option>
+            <option>Home Services (HVAC, Plumbing, etc.)</option>
+            <option>Fitness / Wellness Studio</option>
+            <option>Restaurant / Hospitality</option>
+            <option>E-commerce / Retail</option>
+            <option>Financial Services</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Biggest challenge right now</label>
+          <textarea name="challenge" placeholder="e.g. Missing calls after hours, spending too much time on admin, leads not following up..."></textarea>
+        </div>
+        <button type="submit" class="submit-btn">→ Book My Free Call</button>
+        <p class="form-note">📅 We'll reply within 1 business hour to confirm your call time.</p>
+      </form>
+    </div>
+    <div class="success-msg" id="success-block">
+      <h3>🎉 You're booked!</h3>
+      <p>We got your request. Expect a confirmation email within 1 business hour with your call link.<br><br>In the meantime, check out our <a href="free-tools.html" style="color:#15803d;font-weight:700;">free tools</a> — including the AI email scanner your team can use right now.</p>
+    </div>
+  </div>
+</div>
+
+<div class="faq-section">
+  <div class="faq-inner">
+    <h2>Common Questions</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Is this call really free? <span class="faq-arr">›</span></div>
+        <div class="faq-a">Yes, 100% free. No credit card, no commitment. We talk, figure out if we're a fit, and go from there. If we can't help you, we'll tell you honestly.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How long does it take to set up an AI system? <span class="faq-arr">›</span></div>
+        <div class="faq-a">Most setups take 3–7 business days from signed agreement to go-live. Simpler systems (like an AI receptionist) can go live in 48 hours.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Do I need technical skills? <span class="faq-arr">›</span></div>
+        <div class="faq-a">Zero. We handle everything — setup, configuration, testing, and training. You just run your business. We take care of the tech.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What if the AI doesn't work for my business? <span class="faq-arr">›</span></div>
+        <div class="faq-a">Every setup comes with a results guarantee. If you don't save at least 10 hours/week in the first 30 days, we fix it or refund you. No exceptions.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What does it cost? <span class="faq-arr">›</span></div>
+        <div class="faq-a">Setup fees start at $500 for a single AI system. Monthly retainers for ongoing support and optimization start at $750/mo. We'll give you exact numbers on the call.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="ft-row">
+    <div class="ft-logo">
+      <div class="ft-logo-icon">VM</div>
+      V&amp;M <span>AI Agency</span>
+    </div>
+    <div class="ft-links">
+      <a href="solutions.html">Solutions</a>
+      <a href="free-tools.html">Free Tools</a>
+      <a href="blog.html">Blog</a>
+      <a href="book-a-call.html">Book a Call</a>
+    </div>
+  </div>
+  <div class="ft-bot">© 2025 V&M AI Agency. All rights reserved.</div>
+</footer>
+
+<script>
+  function toggleFaq(el){
+    const item=el.parentElement;
+    item.classList.toggle('open');
+  }
+  function submitForm(e){
+    e.preventDefault();
+    const form=document.getElementById('form-block');
+    const success=document.getElementById('success-block');
+    form.style.display='none';
+    success.style.display='block';
+  }
+</script>
+</body>
+</html>
