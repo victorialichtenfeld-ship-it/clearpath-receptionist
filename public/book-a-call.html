@@ -152,7 +152,7 @@
     <div class="booking-form" id="form-block">
       <div class="form-title">Book Your Free 15-min Call</div>
       <div class="form-sub">Fill out below and we'll confirm your spot within 1 business hour.</div>
-      <form id="contact-form" onsubmit="submitForm(event)">
+      <form id="contact-form" action="https://formspree.io/f/mredopnz" method="POST" onsubmit="submitForm(event)">
         <div class="field-row">
           <div class="field">
             <label>First Name *</label>
@@ -251,12 +251,17 @@
     const item=el.parentElement;
     item.classList.toggle('open');
   }
-  function submitForm(e){
+  async function submitForm(e){
     e.preventDefault();
-    const form=document.getElementById('form-block');
-    const success=document.getElementById('success-block');
-    form.style.display='none';
-    success.style.display='block';
+    const form=e.target;
+    const data=new FormData(form);
+    const res=await fetch(form.action,{method:'POST',body:data,headers:{Accept:'application/json'}});
+    if(res.ok){
+      document.getElementById('form-block').style.display='none';
+      document.getElementById('success-block').style.display='block';
+    } else {
+      alert('Something went wrong. Please try again.');
+    }
   }
 </script>
 </body>
